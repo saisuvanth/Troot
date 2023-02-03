@@ -6,6 +6,8 @@ public class HexCoordinates : MonoBehaviour
 {
     public static float xOffset=1f,yOffset=1,zOffset=0.86f;
 
+    internal Vector3Int GetHexCoords() => offsetCoordinates;
+
     [Header("Offset Coordinates")]
     [SerializeField] 
     private Vector3Int offsetCoordinates;
