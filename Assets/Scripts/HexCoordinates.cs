@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class HexCoordinates : MonoBehaviour
 {
-    public static float xOffset=1f,yOffset=1,zOffset=0.86f;
+    public static float xOffset = 1f, yOffset = 1, zOffset = 0.86f;
 
     internal Vector3Int GetHexCoords() => offsetCoordinates;
 
     [Header("Offset Coordinates")]
-    [SerializeField] 
+    [SerializeField]
     private Vector3Int offsetCoordinates;
 
     private void Awake()
@@ -24,4 +24,6 @@ public class HexCoordinates : MonoBehaviour
         int z = Mathf.RoundToInt(position.z / zOffset);
         return new Vector3Int(x, y, z);
     }
+
+
 }
