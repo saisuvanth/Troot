@@ -27,7 +27,18 @@ public class GenerateMap : MonoBehaviour
 						Vector3 newPosition = OddToWorld(new Vector2Int(x, y));
 						GameObject tile = Instantiate(prefabTile, newPosition, Quaternion.identity, this.transform);
 						tile.name = "Tile -> " + x + " " + y;
-						hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.EMPTY));
+						if (q == mapLength && r == -mapLength)
+						{
+							hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.P2OCCUPIED));
+						}
+						else if (q == -mapLength && r == mapLength)
+						{
+							hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.P1OCCUPIED));
+						}
+						else
+						{
+							hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.EMPTY));
+						}
 					}
 				}
 			}

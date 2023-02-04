@@ -26,15 +26,24 @@ public class PlayerInput : MonoBehaviour
 			{
 				float posX = hit.point.x;
 				float posZ = hit.point.z;
-				// Debug.Log(posX + ' ' + posZ);
 				GameManager gameManager = gameObject.GetComponent<GameManager>();
-				// GenerateMap.OddToCube(GenerateMap.WorldToOdd(hit.point));
 				Vector3Int cubePoint = GenerateMap.OddToCube(GenerateMap.WorldToOdd(hit.point));
+				GameState state = gameManager.gameState;
 				if (gameManager.hexTileDict.ContainsKey(cubePoint))
 				{
-					// Debug.Log("gehe");
-					// Debug.Log(cubePoint);
-					gameManager.hexTileDict[cubePoint].state = TileState.P1OCCUPIED;
+					if (gameManager.hexTileDict[cubePoint].state == TileState.EMPTY)
+					{
+						Tile[] nTiles = gameManager.hexTileDict[cubePoint].GetNeighbours(gameManager.hexTileDict, cubePoint);
+						foreach (var tile in nTiles)
+						{
+							if (tile != null && (tile.state == (state == GameState.P1TURN ? TileState.P1OCCUPIED : TileState.P2OCCUPIED) || tile.state == (state == GameState.P1TURN ? TileState.P1ROOT : TileState.P2ROOT)))
+							{
+								gameManager.hexTileDict[cubePoint].state = state == GameState.P1TURN ? TileState.P1OCCUPIED : TileState.P2OCCUPIED;
+								gameManager.gameState = state == GameState.P1TURN ? GameState.P2TURN : GameState.P1TURN;
+								break;
+							}
+						}
+					}
 				}
 			}
 		}

@@ -4,9 +4,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 	private string P1, P2;
+
 	public GameObject Ground;
+
 	public Dictionary<Vector3Int, Tile> hexTileDict = new Dictionary<Vector3Int, Tile>();
-	private GameState gameState;
+	public GameState gameState;
 
 	void Start()
 	{
@@ -14,11 +16,6 @@ public class GameManager : MonoBehaviour
 		P1 = "Player 1";
 		P2 = "Player 2";
 		gameState = GameState.P1TURN;
-	}
-
-	void Update()
-	{
-		// Debug.Log(hexTileDict[new Vector3Int(1, 0, -1)]);
 	}
 }
 
@@ -46,7 +43,14 @@ public class Tile
 		};
 		for (int i = 0; i < 6; i++)
 		{
-			neighbours[i] = hexDict[cubePoint + directions[i]];
+			if (hexDict.ContainsKey(cubePoint + directions[i]))
+			{
+				neighbours[i] = hexDict[cubePoint + directions[i]];
+			}
+			else
+			{
+				neighbours[i] = null;
+			}
 		}
 		return neighbours;
 	}

@@ -46,7 +46,7 @@ public class TileData : MonoBehaviour
 					Vector3Int temp = new Vector3Int(q, r, s);
 					if (q + r + s == 0 && gameManScript.hexTileDict.ContainsKey(temp) && temp != cubePoint)
 					{
-						if (gameManScript.hexTileDict[new Vector3Int(q, r, s)].state == TileState.P1OCCUPIED)
+						if (gameManScript.hexTileDict[new Vector3Int(q, r, s)].state == TileState.P1OCCUPIED || gameManScript.hexTileDict[new Vector3Int(q, r, s)].state == TileState.P2OCCUPIED)
 						{
 							if (temp == vec_tl) is_tl = true;
 							else if (temp == vec_tr) is_tr = true;
@@ -199,9 +199,11 @@ public class TileData : MonoBehaviour
 		switch (gameManScript.hexTileDict[cubePoint].state)
 		{
 			case TileState.P1OCCUPIED:
+			case TileState.P1ROOT:
 				emptyRenderer.materials[1].color = Color.blue;
 				break;
 			case TileState.P2OCCUPIED:
+			case TileState.P2ROOT:
 				emptyRenderer.materials[1].color = Color.red;
 				break;
 			default:
@@ -212,6 +214,12 @@ public class TileData : MonoBehaviour
 		{
 			if (obj == transform) continue;
 			obj.transform.rotation = Quaternion.Euler(0, orientation, 0);
+			if (gameManScript.hexTileDict[cubePoint].state == TileState.P1ROOT || gameManScript.hexTileDict[cubePoint].state == TileState.P2ROOT)
+			{
+				// state=TileDataState.D_1;
+				if (obj.name == TileDataState.ROOT) obj.gameObject.SetActive(true);
+				else obj.gameObject.SetActive(false);
+			}
 			if (state == TileDataState.D1_1)
 			{
 				if (obj.name == TileDataState.D1_1) obj.gameObject.SetActive(true);
@@ -272,6 +280,7 @@ public class TileData : MonoBehaviour
 				if (obj.name == TileDataState.D6_1) obj.gameObject.SetActive(true);
 				else obj.gameObject.SetActive(false);
 			}
+			if (obj.name == TileDataState.EMPTY) obj.gameObject.SetActive(true);
 		}
 	}
 }
@@ -303,4 +312,6 @@ public class TileDataState
 	public static string D5_1 = "5_1"
 	;
 	public static string D6_1 = "6_1";
+	public static string ROOT = "root";
+
 }
