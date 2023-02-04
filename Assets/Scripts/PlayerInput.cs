@@ -5,7 +5,8 @@ using UnityEngine.Events;
 
 public class PlayerInput : MonoBehaviour
 {
-	public UnityEvent<Vector3> PointerClick;
+	public new Camera camera;
+
 
 	// Update is called once per frame 
 	void Update()
@@ -18,7 +19,24 @@ public class PlayerInput : MonoBehaviour
 		if (Input.GetMouseButtonDown(0))
 		{
 			Vector3 mousPos = Input.mousePosition;
-			PointerClick.Invoke(mousPos);
+			Ray ray = camera.ScreenPointToRay(mousPos);
+			ray.origin = camera.transform.position;
+			RaycastHit hit;
+			if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+			{
+				float posX = hit.point.x;
+				float posZ = hit.point.z;
+				// Debug.Log(posX + ' ' + posZ);
+				GameManager gameManager = gameObject.GetComponent<GameManager>();
+				// GenerateMap.OddToCube(GenerateMap.WorldToOdd(hit.point));
+				Vector3Int cubePoint = GenerateMap.OddToCube(GenerateMap.WorldToOdd(hit.point));
+				if (gameManager.hexTileDict.ContainsKey(cubePoint))
+				{
+					// Debug.Log("gehe");
+					// Debug.Log(cubePoint);
+					gameManager.hexTileDict[cubePoint].state = TileState.P1OCCUPIED;
+				}
+			}
 		}
 	}
 }
