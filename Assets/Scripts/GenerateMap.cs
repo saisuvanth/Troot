@@ -19,10 +19,10 @@ public class GenerateMap : MonoBehaviour
         {
             for (int x = -mapLength; x <= mapLength; x++)
             {
-                Vector3 newPosition = GetPositionForHexFromCoordinate(new Vector2Int(x, y));
+                Vector3 newPosition = OddToWorld(new Vector2Int(x, y));
                 GameObject tile = Instantiate(prefabTile, newPosition, this.transform.rotation, this.transform);
                 tile.name = "Tile -> " + x + " " + y;
-                //tile.transform.position = GetPositionForHexFromCoordinate(new Vector2Int(x, y));
+                //tile.transform.position = OddToWorld(new Vector2Int(x, y));
                 //tile.transform.SetParent(this.transform);
             }
         }
@@ -42,10 +42,10 @@ public class GenerateMap : MonoBehaviour
                         Vector2Int axes = CubeToOdd(new Vector3Int(q, r, s));
                         int y = axes.y;
                         int x = axes.x;
-                        Vector3 newPosition = GetPositionForHexFromCoordinate(new Vector2Int(x, y));
+                        Vector3 newPosition = OddToWorld(new Vector2Int(x, y));
                         GameObject tile = Instantiate(prefabTile, newPosition, Quaternion.identity, this.transform);
                         tile.name = "Tile -> " + x + " " + y;
-                        //tile.transform.position = GetPositionForHexFromCoordinate(new Vector2Int(x, y));
+                        //tile.transform.position = OddToWorld(new Vector2Int(x, y));
                         //tile.transform.SetParent(this.transform);
                     }
                 }
@@ -75,7 +75,7 @@ public class GenerateMap : MonoBehaviour
 
 
 
-    public Vector3 GetPositionForHexFromCoordinate(Vector2Int coordinate)
+    public Vector3 OddToWorld(Vector2Int coordinate)
     {
         int column = coordinate.x;
         int row = coordinate.y;
@@ -104,6 +104,22 @@ public class GenerateMap : MonoBehaviour
         xPosition = (column * horizontalDistance) + offset;
         yPosition = (row * verticalDistance);
         return new Vector3(xPosition, 0, -yPosition);
+    }
+
+    public Vector3Int WorldToOdd(Vector3 worldCoordinate)
+    {
+        float x = worldCoordinate.x;
+        float z = -worldCoordinate.z;
+        float size = this.size;
+        float width = Mathf.Sqrt(3f) * size;
+        float height = 2f * size;
+        float horizontalDistance = width;
+        float verticalDistance = height * (3f / 4f);
+        int row = (int)Math.Round(z / verticalDistance, MidpointRounding.AwayFromZero);
+        bool shouldOffset = (Math.Abs(row) % 2) == 1;
+        float offset = (shouldOffset) ? width / 2 : 0;
+        int column = (int)Math.Round((x - offset) / horizontalDistance, MidpointRounding.AwayFromZero);
+        return new Vector3Int(column, 0, row);
     }
 
 
