@@ -498,6 +498,7 @@ GameObject:
   - component: {fileID: 1152446579}
   - component: {fileID: 1152446578}
   - component: {fileID: 1152446577}
+  - component: {fileID: 1152446580}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -571,6 +572,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1152446580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152446576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac4736d41f81b747a8eee6561e982dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 1496212443}
+  _distance: 5
+  _damping: 2
 --- !u!1 &1465241495
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,6 +675,7 @@ GameObject:
   - component: {fileID: 1496212439}
   - component: {fileID: 1496212440}
   - component: {fileID: 1496212442}
+  - component: {fileID: 1496212443}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -706,8 +723,22 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 100, y: 1, z: 100}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 100, y: 0.2, z: 100}
+  m_Center: {x: 0, y: 0.1, z: 0}
+--- !u!114 &1496212443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496212438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c05fdcc668c99c4aaa17760f9ee476a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _yawLimit: 45
+  _pitchLimit: 45
 --- !u!1 &1616156646
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,6 +893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 1152446578}
+  _cam: {fileID: 1152446580}
 --- !u!1 &2032680658
 GameObject:
   m_ObjectHideFlags: 0

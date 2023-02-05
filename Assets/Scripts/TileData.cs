@@ -26,6 +26,19 @@ public class TileData : MonoBehaviour
 		// gamManScript = gameManager.GetComponent<GameManager>();
 	}
 
+	bool isFavourable(TileState k, bool isP1)
+	{
+		if (isP1)
+		{
+			if (k == TileState.P1OCCUPIED || k == TileState.P1ROOT) return true;
+		}
+		else
+		{
+			if (k == TileState.P2OCCUPIED || k == TileState.P2ROOT) return true;
+		}
+		return false;
+	}
+
 
 	void CalculateTileDataState()
 	{
@@ -46,7 +59,17 @@ public class TileData : MonoBehaviour
 					Vector3Int temp = new Vector3Int(q, r, s);
 					if (q + r + s == 0 && gameManScript.hexTileDict.ContainsKey(temp) && temp != cubePoint)
 					{
-						if (gameManScript.hexTileDict[new Vector3Int(q, r, s)].state == TileState.P1OCCUPIED || gameManScript.hexTileDict[new Vector3Int(q, r, s)].state == TileState.P2OCCUPIED)
+						if (isFavourable(gameManScript.hexTileDict[temp].state, true) && isFavourable(gameManScript.hexTileDict[cubePoint].state, true))
+						{
+							if (temp == vec_tl) is_tl = true;
+							else if (temp == vec_tr) is_tr = true;
+							else if (temp == vec_l) is_l = true;
+							else if (temp == vec_r) is_r = true;
+							else if (temp == vec_bl) is_bl = true;
+							else if (temp == vec_br) is_br = true;
+							neighbours++;
+						}
+						if (isFavourable(gameManScript.hexTileDict[temp].state, false) && isFavourable(gameManScript.hexTileDict[cubePoint].state, false))
 						{
 							if (temp == vec_tl) is_tl = true;
 							else if (temp == vec_tr) is_tr = true;
