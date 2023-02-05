@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
 
 	public GameObject Ground;
 
-	public Dictionary<Vector3Int, Tile> hexTileDict = new Dictionary<Vector3Int, Tile>();
+	[SerializeField]
+	public Dictionary<Vector3Int, Tile> hexTileDict;
 	public GameState gameState;
 
 	void Start()
