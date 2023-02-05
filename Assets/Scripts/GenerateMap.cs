@@ -7,6 +7,12 @@ public class GenerateMap : MonoBehaviour
 {
 	// Start is called before the first frame update
 	public GameObject prefabTile;
+	public GameObject prefabTile1;
+	public GameObject prefabTile2;
+	public GameObject prefabTile3;
+	public GameObject prefabTile4;
+	public GameObject prefabTile5;
+	public GameObject prefabTile6;
 	public int mapLength;
 	private float size = 1f / Mathf.Sqrt(3f);
 
@@ -25,19 +31,76 @@ public class GenerateMap : MonoBehaviour
 						int y = axes.y;
 						int x = axes.x;
 						Vector3 newPosition = OddToWorld(new Vector2Int(x, y));
-						GameObject tile = Instantiate(prefabTile, newPosition, Quaternion.identity, this.transform);
-						tile.name = "Tile -> " + x + " " + y;
 						if (q == mapLength && r == -mapLength)
 						{
+							GameObject tile = Instantiate(prefabTile, newPosition, Quaternion.identity, this.transform);
+							tile.name = "Tile -> " + x + " " + y;
 							hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.P2OCCUPIED));
 						}
 						else if (q == -mapLength && r == mapLength)
 						{
+							GameObject tile = Instantiate(prefabTile, newPosition, Quaternion.identity, this.transform);
+							tile.name = "Tile -> " + x + " " + y;
 							hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.P1OCCUPIED));
 						}
 						else
 						{
-							hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.EMPTY));
+							// Generate a random number between 0 and 2
+							int random = UnityEngine.Random.Range(0, 25);
+							if (random == 0)
+							{
+								GameObject tile = Instantiate(prefabTile1, newPosition, Quaternion.identity, this.transform);
+								tile.name = "Tile -> " + x + " " + y;
+								hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.EMPTY));
+							}
+							else if (random == 1)
+							{
+								GameObject tile = Instantiate(prefabTile2, newPosition, Quaternion.identity, this.transform);
+								tile.name = "Tile -> " + x + " " + y;
+								hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.EMPTY));
+							}
+							else if (random == 2)
+							{
+								GameObject tile = Instantiate(prefabTile3, newPosition, Quaternion.identity, this.transform);
+								tile.name = "Tile -> " + x + " " + y;
+								hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.EMPTY));
+							}
+							else if (random == 3)
+							{
+								int random2 = UnityEngine.Random.Range(0, 2);
+
+								if(random2%2==0)
+								{
+									GameObject tile = Instantiate(prefabTile4, newPosition, Quaternion.identity, this.transform);
+									tile.name = "Tile -> " + x + " " + y;
+									hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.EMPTY));
+								}
+								else
+								{
+									GameObject tile = Instantiate(prefabTile, newPosition, Quaternion.identity, this.transform);
+									tile.name = "Tile -> " + x + " " + y;
+									hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.EMPTY));
+								}
+								
+							}
+							else if (random == 4)
+							{
+								GameObject tile = Instantiate(prefabTile5, newPosition, Quaternion.identity, this.transform);
+								tile.name = "Tile -> " + x + " " + y;
+								hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.EMPTY));
+							}
+							else if (random == 5)
+							{
+								GameObject tile = Instantiate(prefabTile6, newPosition, Quaternion.identity, this.transform);
+								tile.name = "Tile -> " + x + " " + y;
+								hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.EMPTY));
+							}
+							else
+							{
+								GameObject tile = Instantiate(prefabTile, newPosition, Quaternion.identity, this.transform);
+								tile.name = "Tile -> " + x + " " + y;
+								hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.EMPTY));
+							}
 						}
 					}
 				}
