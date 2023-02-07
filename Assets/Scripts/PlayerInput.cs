@@ -26,6 +26,14 @@ public class PlayerInput : MonoBehaviour
 
 			_cam.Move(moveDelta.x, -moveDelta.y);
 		}
+		if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+		{
+			_cam._distance -= 1;
+		}
+		else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+		{
+			_cam._distance += 1;
+		}
 		_prevMousePos = Input.mousePosition;
 		DetectClick();
 	}

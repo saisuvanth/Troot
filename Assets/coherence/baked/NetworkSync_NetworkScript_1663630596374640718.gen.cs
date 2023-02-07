@@ -15,16 +15,16 @@ namespace Coherence.Generated
 	using Coherence.Toolkit;
 	using UnityEngine;
 
-	public struct GameManager__char_32_1_GameManager_5598769809711555312 : ICoherenceComponentData
+	public struct NetworkSync_NetworkScript_1663630596374640718 : ICoherenceComponentData
 	{
-		public SerializeEntityID Ground;
+		public SerializeEntityID gameManager;
 
 		public override string ToString()
 		{
-			return $"GameManager__char_32_1_GameManager_5598769809711555312(Ground: {Ground})";
+			return $"NetworkSync_NetworkScript_1663630596374640718(gameManager: {gameManager})";
 		}
 
-		public uint GetComponentType() => Definition.InternalGameManager__char_32_1_GameManager_5598769809711555312;
+		public uint GetComponentType() => Definition.InternalNetworkSync_NetworkScript_1663630596374640718;
 
 		public const int order = 0;
 
@@ -42,44 +42,44 @@ namespace Coherence.Generated
 
 		public ICoherenceComponentData MergeWith(ICoherenceComponentData data, uint mask)
 		{
-			var other = (GameManager__char_32_1_GameManager_5598769809711555312)data;
+			var other = (NetworkSync_NetworkScript_1663630596374640718)data;
 			if ((mask & 0x01) != 0)
 			{
 				Frame = other.Frame;
-				Ground = other.Ground;
+				gameManager = other.gameManager;
 			}
 			mask >>= 1;
 			return this;
 		}
 
-		public static void Serialize(GameManager__char_32_1_GameManager_5598769809711555312 data, uint mask, IOutProtocolBitStream bitStream)
+		public static void Serialize(NetworkSync_NetworkScript_1663630596374640718 data, uint mask, IOutProtocolBitStream bitStream)
 		{
 			if (bitStream.WriteMask((mask & 0x01) != 0))
 			{
-				bitStream.WriteEntity(data.Ground);
+				bitStream.WriteEntity(data.gameManager);
 			}
 			mask >>= 1;
 		}
 
-		public static (GameManager__char_32_1_GameManager_5598769809711555312, uint, uint?) Deserialize(InProtocolBitStream bitStream)
+		public static (NetworkSync_NetworkScript_1663630596374640718, uint, uint?) Deserialize(InProtocolBitStream bitStream)
 		{
 			var mask = (uint)0;
-			var val = new GameManager__char_32_1_GameManager_5598769809711555312();
+			var val = new NetworkSync_NetworkScript_1663630596374640718();
 	
 			if (bitStream.ReadMask())
 			{
-				val.Ground = bitStream.ReadEntity();
+				val.gameManager = bitStream.ReadEntity();
 				mask |= 0b00000000000000000000000000000001;
 			}
 			return (val, mask, null);
 		}
-		public static (GameManager__char_32_1_GameManager_5598769809711555312, uint, uint?) DeserializeArchetypeGameManager__char_32_1_979025f5a787e6a43b86dc71f2bf290b_GameManager__char_32_1_GameManager_5598769809711555312_LOD0(InProtocolBitStream bitStream)
+		public static (NetworkSync_NetworkScript_1663630596374640718, uint, uint?) DeserializeArchetypeNetworkSync_3be44a6dcf9a3d940bf4c430edc35dfc_NetworkSync_NetworkScript_1663630596374640718_LOD0(InProtocolBitStream bitStream)
 		{
 			var mask = (uint)0;
-			var val = new GameManager__char_32_1_GameManager_5598769809711555312();
+			var val = new NetworkSync_NetworkScript_1663630596374640718();
 			if (bitStream.ReadMask())
 			{
-				val.Ground = bitStream.ReadEntity();
+				val.gameManager = bitStream.ReadEntity();
 				mask |= 0b00000000000000000000000000000001;
 			}
 
@@ -95,7 +95,7 @@ namespace Coherence.Generated
 		/// </summary>
 		public void ResetByteArrays(ICoherenceComponentData lastSent, uint mask)
 		{
-			var last = lastSent as GameManager__char_32_1_GameManager_5598769809711555312?;
+			var last = lastSent as NetworkSync_NetworkScript_1663630596374640718?;
 	
 		}
 	}

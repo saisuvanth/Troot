@@ -85,7 +85,7 @@ namespace Coherence.Generated
 
 			return (val, mask, 0);
 		}
-		public static (WorldPosition, uint, uint?) DeserializeArchetypeGameManager_a100b647a956c8a46a8a62809195868d_WorldPosition_LOD0(InProtocolBitStream bitStream)
+		public static (WorldPosition, uint, uint?) DeserializeArchetypeGameManager_18bf6950f1bf6984a85e638b305a8931_WorldPosition_LOD0(InProtocolBitStream bitStream)
 		{
 			var mask = (uint)0;
 			var val = new WorldPosition();
@@ -97,7 +97,7 @@ namespace Coherence.Generated
 
 			return (val, mask, 0);
 		}
-		public static (WorldPosition, uint, uint?) DeserializeArchetypeGameManager__char_32_1_979025f5a787e6a43b86dc71f2bf290b_WorldPosition_LOD0(InProtocolBitStream bitStream)
+		public static (WorldPosition, uint, uint?) DeserializeArchetypeNetworkSync_3be44a6dcf9a3d940bf4c430edc35dfc_WorldPosition_LOD0(InProtocolBitStream bitStream)
 		{
 			var mask = (uint)0;
 			var val = new WorldPosition();

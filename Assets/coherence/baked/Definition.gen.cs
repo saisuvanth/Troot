@@ -16,7 +16,7 @@ namespace Coherence.Generated
 
 	public class Definition : IDefinition
 	{
-		public const string schemaId = "4be115b7663f57aa657013a8c0f46f9d43943a55";
+		public const string schemaId = "d8bb00a131174fe84803e365372e0fea458a884f";
 		public const uint InternalWorldPosition = 0;
 		public const uint InternalWorldOrientation = 1;
 		public const uint InternalLocalUser = 2;
@@ -119,13 +119,13 @@ namespace Coherence.Generated
 		public const uint InternalGenericFieldULong3 = 99;
 		public const uint InternalGenericFieldColor0 = 100;
 		public const uint InternalGenericFieldColor1 = 101;
-		public const uint InternalGameManager__char_32_1_GameManager_5598769809711555312 = 102;
+		public const uint InternalNetworkSync_NetworkScript_1663630596374640718 = 102;
 		public const uint InternalArchetypeCube_78fdd04f22ed43f40bf52f012fa8bf3b_WorldPosition_LOD0 = 103;
 		public const uint InternalArchetypeCube_78fdd04f22ed43f40bf52f012fa8bf3b_WorldOrientation_LOD0 = 104;
 		public const uint InternalArchetypeCube_78fdd04f22ed43f40bf52f012fa8bf3b_GenericScale_LOD0 = 105;
-		public const uint InternalArchetypeGameManager_a100b647a956c8a46a8a62809195868d_WorldPosition_LOD0 = 106;
-		public const uint InternalArchetypeGameManager__char_32_1_979025f5a787e6a43b86dc71f2bf290b_WorldPosition_LOD0 = 107;
-		public const uint InternalArchetypeGameManager__char_32_1_979025f5a787e6a43b86dc71f2bf290b_GameManager__char_32_1_GameManager_5598769809711555312_LOD0 = 108;
+		public const uint InternalArchetypeGameManager_18bf6950f1bf6984a85e638b305a8931_WorldPosition_LOD0 = 106;
+		public const uint InternalArchetypeNetworkSync_3be44a6dcf9a3d940bf4c430edc35dfc_WorldPosition_LOD0 = 107;
+		public const uint InternalArchetypeNetworkSync_3be44a6dcf9a3d940bf4c430edc35dfc_NetworkSync_NetworkScript_1663630596374640718_LOD0 = 108;
 		public const uint InternalAuthorityRequest = 0;
 		public const uint InternalAuthorityTransfer = 1;
 		public const uint InternalQuerySynced = 2;
@@ -236,13 +236,13 @@ namespace Coherence.Generated
 			{ 99, "GenericFieldULong3" },
 			{ 100, "GenericFieldColor0" },
 			{ 101, "GenericFieldColor1" },
-			{ 102, "GameManager__char_32_1_GameManager_5598769809711555312" },
+			{ 102, "NetworkSync_NetworkScript_1663630596374640718" },
 			{ 103, "ArchetypeCube_78fdd04f22ed43f40bf52f012fa8bf3b_WorldPosition_LOD0" },
 			{ 104, "ArchetypeCube_78fdd04f22ed43f40bf52f012fa8bf3b_WorldOrientation_LOD0" },
 			{ 105, "ArchetypeCube_78fdd04f22ed43f40bf52f012fa8bf3b_GenericScale_LOD0" },
-			{ 106, "ArchetypeGameManager_a100b647a956c8a46a8a62809195868d_WorldPosition_LOD0" },
-			{ 107, "ArchetypeGameManager__char_32_1_979025f5a787e6a43b86dc71f2bf290b_WorldPosition_LOD0" },
-			{ 108, "ArchetypeGameManager__char_32_1_979025f5a787e6a43b86dc71f2bf290b_GameManager__char_32_1_GameManager_5598769809711555312_LOD0" },
+			{ 106, "ArchetypeGameManager_18bf6950f1bf6984a85e638b305a8931_WorldPosition_LOD0" },
+			{ 107, "ArchetypeNetworkSync_3be44a6dcf9a3d940bf4c430edc35dfc_WorldPosition_LOD0" },
+			{ 108, "ArchetypeNetworkSync_3be44a6dcf9a3d940bf4c430edc35dfc_NetworkSync_NetworkScript_1663630596374640718_LOD0" },
 		};
 
 		public static string ComponentNameForTypeId(uint typeId)
@@ -468,20 +468,20 @@ namespace Coherence.Generated
 					return GenericFieldColor0.Deserialize(inProtocolStream);
 				case InternalGenericFieldColor1:
 					return GenericFieldColor1.Deserialize(inProtocolStream);
-				case InternalGameManager__char_32_1_GameManager_5598769809711555312:
-					return GameManager__char_32_1_GameManager_5598769809711555312.Deserialize(inProtocolStream);
+				case InternalNetworkSync_NetworkScript_1663630596374640718:
+					return NetworkSync_NetworkScript_1663630596374640718.Deserialize(inProtocolStream);
 				case InternalArchetypeCube_78fdd04f22ed43f40bf52f012fa8bf3b_WorldPosition_LOD0:
 					return WorldPosition.DeserializeArchetypeCube_78fdd04f22ed43f40bf52f012fa8bf3b_WorldPosition_LOD0(inProtocolStream);
 				case InternalArchetypeCube_78fdd04f22ed43f40bf52f012fa8bf3b_WorldOrientation_LOD0:
 					return WorldOrientation.DeserializeArchetypeCube_78fdd04f22ed43f40bf52f012fa8bf3b_WorldOrientation_LOD0(inProtocolStream);
 				case InternalArchetypeCube_78fdd04f22ed43f40bf52f012fa8bf3b_GenericScale_LOD0:
 					return GenericScale.DeserializeArchetypeCube_78fdd04f22ed43f40bf52f012fa8bf3b_GenericScale_LOD0(inProtocolStream);
-				case InternalArchetypeGameManager_a100b647a956c8a46a8a62809195868d_WorldPosition_LOD0:
-					return WorldPosition.DeserializeArchetypeGameManager_a100b647a956c8a46a8a62809195868d_WorldPosition_LOD0(inProtocolStream);
-				case InternalArchetypeGameManager__char_32_1_979025f5a787e6a43b86dc71f2bf290b_WorldPosition_LOD0:
-					return WorldPosition.DeserializeArchetypeGameManager__char_32_1_979025f5a787e6a43b86dc71f2bf290b_WorldPosition_LOD0(inProtocolStream);
-				case InternalArchetypeGameManager__char_32_1_979025f5a787e6a43b86dc71f2bf290b_GameManager__char_32_1_GameManager_5598769809711555312_LOD0:
-					return GameManager__char_32_1_GameManager_5598769809711555312.DeserializeArchetypeGameManager__char_32_1_979025f5a787e6a43b86dc71f2bf290b_GameManager__char_32_1_GameManager_5598769809711555312_LOD0(inProtocolStream);
+				case InternalArchetypeGameManager_18bf6950f1bf6984a85e638b305a8931_WorldPosition_LOD0:
+					return WorldPosition.DeserializeArchetypeGameManager_18bf6950f1bf6984a85e638b305a8931_WorldPosition_LOD0(inProtocolStream);
+				case InternalArchetypeNetworkSync_3be44a6dcf9a3d940bf4c430edc35dfc_WorldPosition_LOD0:
+					return WorldPosition.DeserializeArchetypeNetworkSync_3be44a6dcf9a3d940bf4c430edc35dfc_WorldPosition_LOD0(inProtocolStream);
+				case InternalArchetypeNetworkSync_3be44a6dcf9a3d940bf4c430edc35dfc_NetworkSync_NetworkScript_1663630596374640718_LOD0:
+					return NetworkSync_NetworkScript_1663630596374640718.DeserializeArchetypeNetworkSync_3be44a6dcf9a3d940bf4c430edc35dfc_NetworkSync_NetworkScript_1663630596374640718_LOD0(inProtocolStream);
 				default:
 					return (null, 0, 0);
 			}
@@ -798,8 +798,8 @@ namespace Coherence.Generated
 				case InternalGenericFieldColor1:
 					GenericFieldColor1.Serialize((GenericFieldColor1)data, mask, protocolStream);
 					break;
-				case InternalGameManager__char_32_1_GameManager_5598769809711555312:
-					GameManager__char_32_1_GameManager_5598769809711555312.Serialize((GameManager__char_32_1_GameManager_5598769809711555312)data, mask, protocolStream);
+				case InternalNetworkSync_NetworkScript_1663630596374640718:
+					NetworkSync_NetworkScript_1663630596374640718.Serialize((NetworkSync_NetworkScript_1663630596374640718)data, mask, protocolStream);
 					break;
 			}
 		}

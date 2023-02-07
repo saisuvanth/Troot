@@ -233,6 +233,7 @@ public class TileData : MonoBehaviour
 				break;
 		}
 		if (gameManScript.hexTileDict[cubePoint].state != TileState.EMPTY) CalculateTileDataState();
+		if (gameManScript.hexTileDict[cubePoint].state == TileState.FILLED) return;
 		foreach (var obj in arr)
 		{
 			if (obj == transform) continue;

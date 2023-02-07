@@ -7,7 +7,7 @@ public class OrbitCamera : MonoBehaviour
 	private FocusPoint _target;
 
 	[SerializeField]
-	private float _distance = 5;
+	public float _distance = 5;
 
 	[SerializeField]
 	private float _damping = 2;
@@ -54,6 +54,7 @@ public class OrbitCamera : MonoBehaviour
 		float yawOverflow = yawDifference - _target.YawLimit;
 		float pitchOverflow = pitchDifference - _target.PitchLimit;
 
+
 		if (yawOverflow > 0) { _yaw = Quaternion.Slerp(_yaw, targetYaw, yawOverflow / yawDifference); }
 		if (pitchOverflow > 0) { _pitch = Quaternion.Slerp(_pitch, targetPitch, pitchOverflow / pitchDifference); }
 	}
@@ -68,6 +69,8 @@ public class OrbitCamera : MonoBehaviour
 	{
 		_targetRotation = _yaw * _pitch;
 		_targetPosition = _target.transform.position + _targetRotation * (-Vector3.forward * _distance);
+
+		Debug.Log(_targetPosition);
 
 		this.transform.rotation = Quaternion.Lerp(this.transform.rotation, _targetRotation, Mathf.Clamp01(Time.smoothDeltaTime * _damping));
 		Vector3 offset = this.transform.rotation * (-Vector3.forward * _distance);
