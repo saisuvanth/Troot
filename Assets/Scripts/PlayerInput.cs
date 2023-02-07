@@ -9,8 +9,32 @@ public class PlayerInput : MonoBehaviour
 
 
 	// Update is called once per frame 
+	public new OrbitCamera _cam;
+
+	private Vector3 _prevMousePos;
+
 	void Update()
 	{
+		const int LeftButton = 0;
+		if (Input.GetMouseButton(LeftButton))
+		{
+			// mouse movement in pixels this frame
+			Vector3 mouseDelta = Input.mousePosition - _prevMousePos;
+
+			// adjust to screen size
+			Vector3 moveDelta = mouseDelta * (360f / Screen.height);
+
+			_cam.Move(moveDelta.x, -moveDelta.y);
+		}
+		if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+		{
+			_cam._distance -= 1;
+		}
+		else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+		{
+			_cam._distance += 1;
+		}
+		_prevMousePos = Input.mousePosition;
 		DetectClick();
 	}
 
@@ -22,8 +46,9 @@ public class PlayerInput : MonoBehaviour
 			Ray ray = camera.ScreenPointToRay(mousPos);
 			ray.origin = camera.transform.position;
 			RaycastHit hit;
-			if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+			if (Physics.Raycast(ray, out hit, 1000f))
 			{
+				Debug.DrawLine(ray.origin, hit.point, Color.red, 10f);
 				float posX = hit.point.x;
 				float posZ = hit.point.z;
 				GameManager gameManager = gameObject.GetComponent<GameManager>();

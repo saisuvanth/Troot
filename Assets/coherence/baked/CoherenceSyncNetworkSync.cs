@@ -22,48 +22,48 @@ namespace Coherence.Generated
 	using Logger = Coherence.Log.Logger;
 	using UnityEngine.Scripting;
 
-	public class Binding_979025f5a787e6a43b86dc71f2bf290b_489fe2bd_4883_45bc_aa1a_c8529eb7a3f2 : ReferenceBinding
+	public class Binding_3be44a6dcf9a3d940bf4c430edc35dfc_9560c926_37bf_43e9_8ac8_d1c07f4f7234 : ReferenceBinding
 	{
-		private GameManager CastedUnityComponent;		
+		private NetworkScript CastedUnityComponent;		
 
 		protected override void OnBindingCloned()
 		{
-			CastedUnityComponent = (GameManager)UnityComponent;
+			CastedUnityComponent = (NetworkScript)UnityComponent;
 		}
-		public override string CoherenceComponentName => "GameManager__char_32_1_GameManager_5598769809711555312";
+		public override string CoherenceComponentName => "NetworkSync_NetworkScript_1663630596374640718";
 
 		public override uint FieldMask => 0b00000000000000000000000000000001;
 
 		public override SerializeEntityID Value
 		{
-			get => (SerializeEntityID)coherenceSync.MonoBridge.UnityObjectToEntityId(CastedUnityComponent.Ground);
-			set => CastedUnityComponent.Ground = coherenceSync.MonoBridge.EntityIdToGameObject(value);
+			get => (SerializeEntityID)coherenceSync.MonoBridge.UnityObjectToEntityId(CastedUnityComponent.gameManager);
+			set => CastedUnityComponent.gameManager = coherenceSync.MonoBridge.EntityIdToGameObject(value);
 		}
 
 		protected override SerializeEntityID ReadComponentData(ICoherenceComponentData coherenceComponent)
 		{
-			var update = (GameManager__char_32_1_GameManager_5598769809711555312)coherenceComponent;
-			return update.Ground;
+			var update = (NetworkSync_NetworkScript_1663630596374640718)coherenceComponent;
+			return update.gameManager;
 		}
 		
 		public override ICoherenceComponentData WriteComponentData(ICoherenceComponentData coherenceComponent)
 		{
-			var update = (GameManager__char_32_1_GameManager_5598769809711555312)coherenceComponent;
-			update.Ground = Value;
+			var update = (NetworkSync_NetworkScript_1663630596374640718)coherenceComponent;
+			update.gameManager = Value;
 			return update;
 		}
 
 		public override ICoherenceComponentData CreateComponentData()
 		{
-			return new GameManager__char_32_1_GameManager_5598769809711555312();
+			return new NetworkSync_NetworkScript_1663630596374640718();
 		}
 	}
 
 
 	[Preserve]
-	[AddComponentMenu("coherence/Baked/Baked 'GameManager 1' (auto assigned)")]
+	[AddComponentMenu("coherence/Baked/Baked 'NetworkSync' (auto assigned)")]
 	[RequireComponent(typeof(CoherenceSync))]
-	public class CoherenceSyncGameManager__char_32_1 : CoherenceSyncBaked
+	public class CoherenceSyncNetworkSync : CoherenceSyncBaked
 	{
 		private CoherenceSync coherenceSync;
 		private Logger logger;
@@ -78,16 +78,16 @@ namespace Coherence.Generated
 			coherenceSync = GetComponent<CoherenceSync>();
 			coherenceSync.usingReflection = false;
 
-			logger = coherenceSync.logger.With<CoherenceSyncGameManager__char_32_1>();
-			if (coherenceSync.TryGetBindingByGuid("489fe2bd-4883-45bc-aa1a-c8529eb7a3f2", "Ground", out Binding InternalGameManager__char_32_1_GameManager_5598769809711555312_GameManager__char_32_1_GameManager_5598769809711555312_Ground))
+			logger = coherenceSync.logger.With<CoherenceSyncNetworkSync>();
+			if (coherenceSync.TryGetBindingByGuid("9560c926-37bf-43e9-8ac8-d1c07f4f7234", "gameManager", out Binding InternalNetworkSync_NetworkScript_1663630596374640718_NetworkSync_NetworkScript_1663630596374640718_gameManager))
 			{
-				var clone = new Binding_979025f5a787e6a43b86dc71f2bf290b_489fe2bd_4883_45bc_aa1a_c8529eb7a3f2();
-				InternalGameManager__char_32_1_GameManager_5598769809711555312_GameManager__char_32_1_GameManager_5598769809711555312_Ground.CloneTo(clone);
-				coherenceSync.Bindings[coherenceSync.Bindings.IndexOf(InternalGameManager__char_32_1_GameManager_5598769809711555312_GameManager__char_32_1_GameManager_5598769809711555312_Ground)] = clone;
+				var clone = new Binding_3be44a6dcf9a3d940bf4c430edc35dfc_9560c926_37bf_43e9_8ac8_d1c07f4f7234();
+				InternalNetworkSync_NetworkScript_1663630596374640718_NetworkSync_NetworkScript_1663630596374640718_gameManager.CloneTo(clone);
+				coherenceSync.Bindings[coherenceSync.Bindings.IndexOf(InternalNetworkSync_NetworkScript_1663630596374640718_NetworkSync_NetworkScript_1663630596374640718_gameManager)] = clone;
 			}
 			else
 			{
-				logger.Error("Couldn't find binding (GameManager).Ground");
+				logger.Error("Couldn't find binding (NetworkScript).gameManager");
 			}
 		}
 
@@ -127,7 +127,7 @@ namespace Coherence.Generated
 			switch(command)
 			{
 				default:
-					logger.Warning($"[CoherenceSyncGameManager__char_32_1] Unhandled command: {command.GetType()}.");
+					logger.Warning($"[CoherenceSyncNetworkSync] Unhandled command: {command.GetType()}.");
 					break;
 			}
 		}
