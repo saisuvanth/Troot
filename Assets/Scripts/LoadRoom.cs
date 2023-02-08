@@ -10,4 +10,9 @@ public class LoadRoom : MonoBehaviour
     {
         roomId.text = (RoomScript.joinedRoomData.Id+"0");
     }
+
+    public void LeaveRoom()
+    {
+        RoomScript.LeaveRoom();
+    }
 }
