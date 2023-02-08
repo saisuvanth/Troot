@@ -115,4 +115,16 @@ public class RoomScript : MonoBehaviour
             Debug.Log("Error: " + e);
         }
     }
+
+    public static async void LeaveRoom()
+    {
+        try{
+            // Add the code to RemoveRoom if the user is the creator
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MenuScene");
+        }
+        catch (System.Exception e)
+        {
+            Debug.Log("Error: " + e);
+        }
+    }
 }
