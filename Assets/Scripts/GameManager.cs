@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
 	public GameObject Ground;
 
-	[SerializeField]
+	[Sync]
 	public Dictionary<Vector3Int, Tile> hexTileDict;
 	public GameState gameState;
 
@@ -21,6 +21,12 @@ public class GameManager : MonoBehaviour
 		P1 = "Player 1";
 		P2 = "Player 2";
 		gameState = GameState.P1TURN;
+	}
+
+	public void onChange(Dictionary<Vector3Int, Tile> tileDict, GameState state)
+	{
+		hexTileDict = tileDict;
+		gameState = state;
 	}
 
 	void Awake()

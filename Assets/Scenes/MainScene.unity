@@ -2245,10 +2245,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18bf6950f1bf6984a85e638b305a8931, type: 3}
 --- !u!1001 &4709462113673974650
@@ -2310,5 +2306,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4189742740095298946, guid: 3be44a6dcf9a3d940bf4c430edc35dfc, type: 3}
+      propertyPath: onBeforeNetworkedInstantiation.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189742740095298946, guid: 3be44a6dcf9a3d940bf4c430edc35dfc, type: 3}
+      propertyPath: onBeforeNetworkedInstantiation.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189742740095298946, guid: 3be44a6dcf9a3d940bf4c430edc35dfc, type: 3}
+      propertyPath: onBeforeNetworkedInstantiation.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4709462113673974651}
+    - target: {fileID: 4189742740095298946, guid: 3be44a6dcf9a3d940bf4c430edc35dfc, type: 3}
+      propertyPath: onBeforeNetworkedInstantiation.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3be44a6dcf9a3d940bf4c430edc35dfc, type: 3}
+--- !u!114 &4709462113673974651 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4189742740095298946, guid: 3be44a6dcf9a3d940bf4c430edc35dfc, type: 3}
+  m_PrefabInstance: {fileID: 4709462113673974650}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff62c046a053f416a8dc48ad6483a25e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
