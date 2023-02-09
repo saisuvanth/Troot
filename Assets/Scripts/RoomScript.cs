@@ -85,7 +85,7 @@ public class RoomScript : MonoBehaviour
 		}
 	}
 
-	public async void JoinSearchedRoom()
+	public void JoinSearchedRoom()
 	{
 		searchRoom(roomName.text);
 	}
