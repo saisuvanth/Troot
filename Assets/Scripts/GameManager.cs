@@ -1,8 +1,12 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
+using Coherence.Runtime;
+using Coherence.Toolkit;
 
 public class GameManager : MonoBehaviour
 {
+	public CoherenceMonoBridge bridge;
 	private string P1, P2;
 
 	public GameObject Ground;
@@ -17,6 +21,31 @@ public class GameManager : MonoBehaviour
 		P1 = "Player 1";
 		P2 = "Player 2";
 		gameState = GameState.P1TURN;
+	}
+
+	void Awake()
+	{
+		if (!MonoBridgeStore.TryGetBridge(gameObject.scene, out bridge))
+		{
+			return;
+		}
+		RoomData rm = RoomScript.joinedRoomData;
+		StartCoroutine(JoinRoom(rm));
+	}
+
+	public IEnumerator JoinRoom(RoomData roomData)
+	{
+		try
+		{
+			bridge.JoinRoom(roomData);
+			Debug.Log("Room Data: " + roomData);
+			// Scene transition with room id
+		}
+		catch (System.Exception e)
+		{
+			Debug.Log("Error: " + e);
+		}
+		yield return new WaitForSeconds(1);
 	}
 }
 
@@ -60,7 +89,7 @@ public class Tile
 
 public enum TileState
 {
-	EMPTY, P1OCCUPIED, P2OCCUPIED, P1DECAYED, P2DECAYED, P1ROOT, P2ROOT, FILLED
+	EMPTY, P1OCCUPIED, P2OCCUPIED, P1DECAYED, P2DECAYED, P1ROOT, P2ROOT
 
 }
 

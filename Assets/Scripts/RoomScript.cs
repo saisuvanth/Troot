@@ -7,124 +7,126 @@ using TMPro;
 
 public class RoomScript : MonoBehaviour
 {
-    private CoherenceMonoBridge bridge;
-    public TMP_Dropdown dropdown;
-    public TextMeshProUGUI TextBox;
-    public TMP_InputField roomName;
-    public TextMeshProUGUI roomErrorText;
+	private CoherenceMonoBridge bridge;
+	public TMP_Dropdown dropdown;
+	public TextMeshProUGUI TextBox;
+	public TMP_InputField roomName;
+	public TextMeshProUGUI roomErrorText;
 
-    private string selectedRegion;
-    public static RoomData joinedRoomData;
+	private string selectedRegion;
+	public static RoomData joinedRoomData;
 
-    private async void Start()
-    {
-        if (!MonoBridgeStore.TryGetBridge(gameObject.scene, out bridge))
-        {
-            return; 
-        }
+	public void Start()
+	{
+		RoomStart();
+	}
 
-        try{
-            var regions = await PlayResolver.FetchRegions();
-            dropdown.ClearOptions();
+	private async void RoomStart()
+	{
+		if (!MonoBridgeStore.TryGetBridge(gameObject.scene, out bridge))
+		{
+			return;
+		}
 
-            Debug.Log("Regions: " + regions);
+		try
+		{
+			var regions = await PlayResolver.FetchRegions();
+			dropdown.ClearOptions();
 
-            foreach (var region in regions)
-            {
-                dropdown.options.Add(new TMP_Dropdown.OptionData(region,null));
-            }
+			Debug.Log("Regions: " + regions);
 
-            DropdownItemSelected(dropdown);
+			foreach (var region in regions)
+			{
+				dropdown.options.Add(new TMP_Dropdown.OptionData(region, null));
+			}
 
-            dropdown.onValueChanged.AddListener(delegate {
-                DropdownItemSelected(dropdown);
-            });
-        }
-        catch (System.Exception e)
-        {
-            Debug.Log("Error: " + e);
-        }
-    }
+			DropdownItemSelected(dropdown);
 
-    void DropdownItemSelected(TMP_Dropdown dropdown)
-    {
-        int index = dropdown.value;
-        selectedRegion = dropdown.options[index].text;
-        TextBox.text = dropdown.options[index].text;
-    }
+			dropdown.onValueChanged.AddListener(delegate
+			{
+				DropdownItemSelected(dropdown);
+			});
+		}
+		catch (System.Exception e)
+		{
+			Debug.Log("Error: " + e);
+		}
+	}
 
-    public async void CreateRoom()
-    {
-        try{
-            if(selectedRegion != "")
-            {
-                var creatorName=PlayerPrefs.GetString("Username");
-                Debug.Log("Creating room in: " + selectedRegion);
-                RoomCreationOptions options = new RoomCreationOptions();
-                options.Tags = new string[] {creatorName};
-                options.MaxClients = 2;
-                var roomData=await PlayResolver.CreateRoom(selectedRegion,options);
+	void DropdownItemSelected(TMP_Dropdown dropdown)
+	{
+		int index = dropdown.value;
+		selectedRegion = dropdown.options[index].text;
+		TextBox.text = dropdown.options[index].text;
+	}
 
-                Debug.Log("Room Data: " + roomData);
+	public async void CreateRoom()
+	{
+		try
+		{
+			if (selectedRegion != "")
+			{
+				var creatorName = PlayerPrefs.GetString("Username");
+				Debug.Log(selectedRegion);
+				RoomCreationOptions options = new RoomCreationOptions();
+				options.Tags = new string[] { creatorName };
+				options.MaxClients = 2;
+				var roomData = await PlayResolver.CreateRoom(selectedRegion, options);
 
-                JoinRoom(roomData);
-            }
-        }
-        catch (System.Exception e)
-        {
-            Debug.Log("Error: " + e);
-        }
-    }
+				joinedRoomData = roomData;
+				Debug.Log("Room Data: " + roomData);
+				UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+				// JoinRoom(roomData);
+			}
+		}
+		catch (System.Exception e)
+		{
+			Debug.Log("Error: " + e);
+		}
+	}
 
-    public async void JoinSearchedRoom()
-    {
-        searchRoom(roomName.text);
-    }
+	public async void JoinSearchedRoom()
+	{
+		searchRoom(roomName.text);
+	}
 
-    public async void searchRoom(string roomName)
-    {
-        try{
-            Debug.Log("Searching room in: " + roomName);
-            string[] roomTags = {roomName};
-            var roomData=await PlayResolver.FetchRooms(selectedRegion,roomTags);
+	public async void searchRoom(string roomName)
+	{
+		try
+		{
+			Debug.Log("Searching room in: " + roomName);
+			string[] roomTags = { roomName };
+			var roomData = await PlayResolver.FetchRooms(selectedRegion, roomTags);
 
-            if(roomData.Count > 0)
-            JoinRoom(roomData[0]);
-            else
-            roomErrorText.text = "Room not found";
+			if (roomData.Count > 0)
+			{
 
-        }
-        catch (System.Exception e)
-        {
-            Debug.Log("Error: " + e);
-        }
-    }
+				Debug.Log("Room Data: " + roomData[0]);
+				joinedRoomData = roomData[0];
+				UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+				// JoinRoom(roomData[0]);
+			}
+			else
+				roomErrorText.text = "Room not found";
 
-    public async void JoinRoom(RoomData roomData)
-    {
-        try{
-            bridge.JoinRoom(roomData);
-            Debug.Log("Room Data: " + roomData);
+		}
+		catch (System.Exception e)
+		{
+			Debug.Log("Error: " + e);
+		}
+	}
 
-            // Scene transition with room id
-            joinedRoomData = roomData;
-            UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
-        }
-        catch (System.Exception e)
-        {
-            Debug.Log("Error: " + e);
-        }
-    }
 
-    public static async void LeaveRoom()
-    {
-        try{
-            // Add the code to RemoveRoom if the user is the creator
-            UnityEngine.SceneManagement.SceneManager.LoadScene("MenuScene");
-        }
-        catch (System.Exception e)
-        {
-            Debug.Log("Error: " + e);
-        }
-    }
+	public static async void LeaveRoom()
+	{
+		try
+		{
+			// Add the code to RemoveRoom if the user is the creator
+			UnityEngine.SceneManagement.SceneManager.LoadScene("MenuScene");
+		}
+		catch (System.Exception e)
+		{
+			Debug.Log("Error: " + e);
+		}
+	}
 }

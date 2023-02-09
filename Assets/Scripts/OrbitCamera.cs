@@ -70,7 +70,6 @@ public class OrbitCamera : MonoBehaviour
 		_targetRotation = _yaw * _pitch;
 		_targetPosition = _target.transform.position + _targetRotation * (-Vector3.forward * _distance);
 
-		Debug.Log(_targetPosition);
 
 		this.transform.rotation = Quaternion.Lerp(this.transform.rotation, _targetRotation, Mathf.Clamp01(Time.smoothDeltaTime * _damping));
 		Vector3 offset = this.transform.rotation * (-Vector3.forward * _distance);

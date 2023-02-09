@@ -16,7 +16,7 @@ namespace Coherence.Generated
 
 	public class Definition : IDefinition
 	{
-		public const string schemaId = "d8bb00a131174fe84803e365372e0fea458a884f";
+		public const string schemaId = "6115c8fcee6e1416be2ce570dd457128056cafea";
 		public const uint InternalWorldPosition = 0;
 		public const uint InternalWorldOrientation = 1;
 		public const uint InternalLocalUser = 2;
@@ -123,9 +123,8 @@ namespace Coherence.Generated
 		public const uint InternalArchetypeCube_78fdd04f22ed43f40bf52f012fa8bf3b_WorldPosition_LOD0 = 103;
 		public const uint InternalArchetypeCube_78fdd04f22ed43f40bf52f012fa8bf3b_WorldOrientation_LOD0 = 104;
 		public const uint InternalArchetypeCube_78fdd04f22ed43f40bf52f012fa8bf3b_GenericScale_LOD0 = 105;
-		public const uint InternalArchetypeGameManager_18bf6950f1bf6984a85e638b305a8931_WorldPosition_LOD0 = 106;
-		public const uint InternalArchetypeNetworkSync_3be44a6dcf9a3d940bf4c430edc35dfc_WorldPosition_LOD0 = 107;
-		public const uint InternalArchetypeNetworkSync_3be44a6dcf9a3d940bf4c430edc35dfc_NetworkSync_NetworkScript_1663630596374640718_LOD0 = 108;
+		public const uint InternalArchetypeNetworkSync_3be44a6dcf9a3d940bf4c430edc35dfc_WorldPosition_LOD0 = 106;
+		public const uint InternalArchetypeNetworkSync_3be44a6dcf9a3d940bf4c430edc35dfc_NetworkSync_NetworkScript_1663630596374640718_LOD0 = 107;
 		public const uint InternalAuthorityRequest = 0;
 		public const uint InternalAuthorityTransfer = 1;
 		public const uint InternalQuerySynced = 2;
@@ -240,9 +239,8 @@ namespace Coherence.Generated
 			{ 103, "ArchetypeCube_78fdd04f22ed43f40bf52f012fa8bf3b_WorldPosition_LOD0" },
 			{ 104, "ArchetypeCube_78fdd04f22ed43f40bf52f012fa8bf3b_WorldOrientation_LOD0" },
 			{ 105, "ArchetypeCube_78fdd04f22ed43f40bf52f012fa8bf3b_GenericScale_LOD0" },
-			{ 106, "ArchetypeGameManager_18bf6950f1bf6984a85e638b305a8931_WorldPosition_LOD0" },
-			{ 107, "ArchetypeNetworkSync_3be44a6dcf9a3d940bf4c430edc35dfc_WorldPosition_LOD0" },
-			{ 108, "ArchetypeNetworkSync_3be44a6dcf9a3d940bf4c430edc35dfc_NetworkSync_NetworkScript_1663630596374640718_LOD0" },
+			{ 106, "ArchetypeNetworkSync_3be44a6dcf9a3d940bf4c430edc35dfc_WorldPosition_LOD0" },
+			{ 107, "ArchetypeNetworkSync_3be44a6dcf9a3d940bf4c430edc35dfc_NetworkSync_NetworkScript_1663630596374640718_LOD0" },
 		};
 
 		public static string ComponentNameForTypeId(uint typeId)
@@ -476,8 +474,6 @@ namespace Coherence.Generated
 					return WorldOrientation.DeserializeArchetypeCube_78fdd04f22ed43f40bf52f012fa8bf3b_WorldOrientation_LOD0(inProtocolStream);
 				case InternalArchetypeCube_78fdd04f22ed43f40bf52f012fa8bf3b_GenericScale_LOD0:
 					return GenericScale.DeserializeArchetypeCube_78fdd04f22ed43f40bf52f012fa8bf3b_GenericScale_LOD0(inProtocolStream);
-				case InternalArchetypeGameManager_18bf6950f1bf6984a85e638b305a8931_WorldPosition_LOD0:
-					return WorldPosition.DeserializeArchetypeGameManager_18bf6950f1bf6984a85e638b305a8931_WorldPosition_LOD0(inProtocolStream);
 				case InternalArchetypeNetworkSync_3be44a6dcf9a3d940bf4c430edc35dfc_WorldPosition_LOD0:
 					return WorldPosition.DeserializeArchetypeNetworkSync_3be44a6dcf9a3d940bf4c430edc35dfc_WorldPosition_LOD0(inProtocolStream);
 				case InternalArchetypeNetworkSync_3be44a6dcf9a3d940bf4c430edc35dfc_NetworkSync_NetworkScript_1663630596374640718_LOD0:

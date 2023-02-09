@@ -11,13 +11,13 @@ public class TileData : MonoBehaviour
 	public string state;
 	public float orientation;
 	public bool selected = false;
-	public GameObject gameManager;
+	// public GameObject gameManager;
 	public GameManager gameManScript;
 	private Vector3Int cubePoint;
 
 	public MeshRenderer emptyRenderer;
 	// Start is called before the first frame update
-	void Start()
+	public void Start()
 	{
 		arr = this.GetComponentsInChildren<Transform>(true);
 		state = TileDataState.EMPTY;
@@ -40,7 +40,7 @@ public class TileData : MonoBehaviour
 	}
 
 
-	void CalculateTileDataState()
+	void CalculateTileDataState(Dictionary<Vector3Int, Tile> hexTileDict)
 	{
 		int neighbours = 0;
 		Vector3Int vec_tl = (cubePoint + new Vector3Int(0, -1, 1));
@@ -57,9 +57,9 @@ public class TileData : MonoBehaviour
 				for (int s = cubePoint.z - 1; s <= cubePoint.z + 1; s++)
 				{
 					Vector3Int temp = new Vector3Int(q, r, s);
-					if (q + r + s == 0 && gameManScript.hexTileDict.ContainsKey(temp) && temp != cubePoint)
+					if (q + r + s == 0 && hexTileDict.ContainsKey(temp) && temp != cubePoint)
 					{
-						if (isFavourable(gameManScript.hexTileDict[temp].state, true) && isFavourable(gameManScript.hexTileDict[cubePoint].state, true))
+						if (isFavourable(hexTileDict[temp].state, true) && isFavourable(hexTileDict[cubePoint].state, true))
 						{
 							if (temp == vec_tl) is_tl = true;
 							else if (temp == vec_tr) is_tr = true;
@@ -69,7 +69,7 @@ public class TileData : MonoBehaviour
 							else if (temp == vec_br) is_br = true;
 							neighbours++;
 						}
-						if (isFavourable(gameManScript.hexTileDict[temp].state, false) && isFavourable(gameManScript.hexTileDict[cubePoint].state, false))
+						if (isFavourable(hexTileDict[temp].state, false) && isFavourable(hexTileDict[cubePoint].state, false))
 						{
 							if (temp == vec_tl) is_tl = true;
 							else if (temp == vec_tr) is_tr = true;
@@ -217,9 +217,11 @@ public class TileData : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	void Update()
+	public void tileUpdate(Dictionary<Vector3Int, Tile> hexTileDict)
 	{
-		switch (gameManScript.hexTileDict[cubePoint].state)
+		// Debug.Log(hexTileDict);
+		// Debug.Log(cubePoint);
+		switch (hexTileDict[cubePoint].state)
 		{
 			case TileState.P1OCCUPIED:
 			case TileState.P1ROOT:
@@ -232,13 +234,13 @@ public class TileData : MonoBehaviour
 			default:
 				break;
 		}
-		if (gameManScript.hexTileDict[cubePoint].state != TileState.EMPTY) CalculateTileDataState();
-		if (gameManScript.hexTileDict[cubePoint].state == TileState.FILLED) return;
+		if (hexTileDict[cubePoint].state != TileState.EMPTY) CalculateTileDataState(hexTileDict);
+		// if (hexTileDict[cubePoint].state == TileState.FILLED) return;
 		foreach (var obj in arr)
 		{
 			if (obj == transform) continue;
 			obj.transform.rotation = Quaternion.Euler(0, orientation, 0);
-			if (gameManScript.hexTileDict[cubePoint].state == TileState.P1ROOT || gameManScript.hexTileDict[cubePoint].state == TileState.P2ROOT)
+			if (hexTileDict[cubePoint].state == TileState.P1ROOT || hexTileDict[cubePoint].state == TileState.P2ROOT)
 			{
 				// state=TileDataState.D_1;
 				if (obj.name == TileDataState.ROOT) obj.gameObject.SetActive(true);
@@ -277,6 +279,11 @@ public class TileData : MonoBehaviour
 			else if (state == TileDataState.D3_3)
 			{
 				if (obj.name == TileDataState.D3_3) obj.gameObject.SetActive(true);
+				else obj.gameObject.SetActive(false);
+			}
+			else if (state == TileDataState.D3_4)
+			{
+				if (obj.name == TileDataState.D3_4) obj.gameObject.SetActive(true);
 				else obj.gameObject.SetActive(false);
 			}
 			else if (state == TileDataState.D4_1)

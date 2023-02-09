@@ -65,9 +65,14 @@ public class PlayerInput : MonoBehaviour
 							{
 								gameManager.hexTileDict[cubePoint].state = state == GameState.P1TURN ? TileState.P1OCCUPIED : TileState.P2OCCUPIED;
 								gameManager.gameState = state == GameState.P1TURN ? GameState.P2TURN : GameState.P1TURN;
-								break;
+								tile.transform.GetComponent<TileData>().tileUpdate(gameManager.hexTileDict);
+								// GameObject obj1 = GameObject.Find(string.Format("Tile -> {0} {1} {2}", cubePoint.x, cubePoint.y, cubePoint.z));
+								// obj1.GetComponent<TileData>().tileUpdate(gameManager.hexTileDict);
+								// break;
 							}
 						}
+						GameObject obj = GameObject.Find(string.Format("Tile -> {0} {1} {2}", cubePoint.x, cubePoint.y, cubePoint.z));
+						obj.GetComponent<TileData>().tileUpdate(gameManager.hexTileDict);
 					}
 				}
 			}

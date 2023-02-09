@@ -34,14 +34,18 @@ public class GenerateMap : MonoBehaviour
 						if (q == mapLength && r == -mapLength)
 						{
 							GameObject tile = Instantiate(prefabTile, newPosition, Quaternion.identity, this.transform);
-							tile.name = "Tile -> " + x + " " + y;
+							tile.name = "Tile -> " + q + " " + r + " " + s;
 							hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.P2OCCUPIED));
+							tile.GetComponent<TileData>().Start();
+							tile.GetComponent<TileData>().tileUpdate(hexTiles);
 						}
 						else if (q == -mapLength && r == mapLength)
 						{
 							GameObject tile = Instantiate(prefabTile, newPosition, Quaternion.identity, this.transform);
-							tile.name = "Tile -> " + x + " " + y;
+							tile.name = "Tile -> " + q + " " + r + " " + s;
 							hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.P1OCCUPIED));
+							tile.GetComponent<TileData>().Start();
+							tile.GetComponent<TileData>().tileUpdate(hexTiles);
 						}
 						else
 						{
@@ -50,20 +54,26 @@ public class GenerateMap : MonoBehaviour
 							if (random == 0)
 							{
 								GameObject tile = Instantiate(prefabTile1, newPosition, Quaternion.identity, this.transform);
-								tile.name = "Tile -> " + x + " " + y;
-								hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.FILLED));
+								tile.name = "Tile -> " + q + " " + r + " " + s;
+								hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.EMPTY));
+								tile.GetComponent<TileData>().Start();
+								tile.GetComponent<TileData>().tileUpdate(hexTiles);
 							}
 							else if (random == 1)
 							{
 								GameObject tile = Instantiate(prefabTile2, newPosition, Quaternion.identity, this.transform);
-								tile.name = "Tile -> " + x + " " + y;
-								hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.FILLED));
+								tile.name = "Tile -> " + q + " " + r + " " + s;
+								hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.EMPTY));
+								tile.GetComponent<TileData>().Start();
+								tile.GetComponent<TileData>().tileUpdate(hexTiles);
 							}
 							else if (random == 2)
 							{
 								GameObject tile = Instantiate(prefabTile3, newPosition, Quaternion.identity, this.transform);
-								tile.name = "Tile -> " + x + " " + y;
-								hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.FILLED));
+								tile.name = "Tile -> " + q + " " + r + " " + s;
+								hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.EMPTY));
+								tile.GetComponent<TileData>().Start();
+								tile.GetComponent<TileData>().tileUpdate(hexTiles);
 							}
 							else if (random == 3)
 							{
@@ -72,34 +82,44 @@ public class GenerateMap : MonoBehaviour
 								if (random2 % 2 == 0)
 								{
 									GameObject tile = Instantiate(prefabTile4, newPosition, Quaternion.identity, this.transform);
-									tile.name = "Tile -> " + x + " " + y;
-									hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.FILLED));
+									tile.name = "Tile -> " + q + " " + r + " " + s;
+									hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.EMPTY));
+									tile.GetComponent<TileData>().Start();
+									tile.GetComponent<TileData>().tileUpdate(hexTiles);
 								}
 								else
 								{
 									GameObject tile = Instantiate(prefabTile, newPosition, Quaternion.identity, this.transform);
-									tile.name = "Tile -> " + x + " " + y;
+									tile.name = "Tile -> " + q + " " + r + " " + s;
 									hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.EMPTY));
+									tile.GetComponent<TileData>().Start();
+									tile.GetComponent<TileData>().tileUpdate(hexTiles);
 								}
 
 							}
 							else if (random == 4)
 							{
 								GameObject tile = Instantiate(prefabTile5, newPosition, Quaternion.identity, this.transform);
-								tile.name = "Tile -> " + x + " " + y;
-								hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.FILLED));
+								tile.name = "Tile -> " + q + " " + r + " " + s;
+								hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.EMPTY));
+								tile.GetComponent<TileData>().Start();
+								tile.GetComponent<TileData>().tileUpdate(hexTiles);
 							}
 							else if (random == 5)
 							{
 								GameObject tile = Instantiate(prefabTile6, newPosition, Quaternion.identity, this.transform);
-								tile.name = "Tile -> " + x + " " + y;
-								hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.FILLED));
+								tile.name = "Tile -> " + q + " " + r + " " + s;
+								hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.EMPTY));
+								tile.GetComponent<TileData>().Start();
+								tile.GetComponent<TileData>().tileUpdate(hexTiles);
 							}
 							else
 							{
 								GameObject tile = Instantiate(prefabTile, newPosition, Quaternion.identity, this.transform);
-								tile.name = "Tile -> " + x + " " + y;
+								tile.name = "Tile -> " + q + " " + r + " " + s;
 								hexTiles.Add(new Vector3Int(q, r, s), new Tile(tile.transform, TileState.EMPTY));
+								tile.GetComponent<TileData>().Start();
+								tile.GetComponent<TileData>().tileUpdate(hexTiles);
 							}
 						}
 					}
