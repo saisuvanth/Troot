@@ -1988,7 +1988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 3932090758663942528}
-  scoreText: {fileID: 529605008}
+  scoreText: {fileID: 308169396}
   scoreBarMask: {fileID: 1602866760}
 --- !u!1001 &1147504309
 PrefabInstance:
