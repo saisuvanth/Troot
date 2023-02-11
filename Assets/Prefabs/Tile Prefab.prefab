@@ -58,7 +58,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6809365534666586368}
-  m_Mesh: {fileID: 3906130615805142554, guid: 4608f542833863e4b813e98f4e186408, type: 3}
+  m_Mesh: {fileID: 3906130615805142554, guid: 632d7d6a955519945b9dc63ce60f4272, type: 3}
 --- !u!23 &5007797797470689493
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -66,7 +66,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6809365534666586368}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -79,8 +79,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6126091556477775235, guid: 4608f542833863e4b813e98f4e186408, type: 3}
-  - {fileID: -9117483709511198939, guid: 4608f542833863e4b813e98f4e186408, type: 3}
+  - {fileID: -8067726398312463513, guid: 19036737546b8c9459e45a42b588c415, type: 3}
+  - {fileID: -9117483709511198939, guid: c11182fe5cadcfc459b8ba937036bfcf, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -128,12 +128,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da3ca647a60dd4479a0f360cf66612d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arr: []
+  currentMesh: 0
+  meshes:
+  - {fileID: 6930562535076146528, guid: 36cf722de315fff42a16240c21372541, type: 3}
+  - {fileID: 2844270860779720824, guid: b43e049968adabd4ba5b398a3ecf0c20, type: 3}
+  - {fileID: 2262024730687926025, guid: 58baa1fae6920db4e9cfbf249829dd2f, type: 3}
+  - {fileID: 8936556873355141206, guid: 96e1e8e0c4fe3af479e0da5cacc5fe18, type: 3}
+  - {fileID: 3063306464948523860, guid: 97277297a61ff1143887dc269490c96e, type: 3}
+  - {fileID: 4434781911773332089, guid: 2466c3bfd3069a448a3ee04d9ed9ec86, type: 3}
+  - {fileID: 2610975833267326217, guid: 48b87020a698c2943b313aba1a779778, type: 3}
+  - {fileID: 6306815826394477561, guid: d1316e74f8376d64cb0fe911a0540720, type: 3}
+  - {fileID: 5413042154395626519, guid: 7858af8f92af54e42a60dcc548a44eb7, type: 3}
+  - {fileID: 8911731201831366119, guid: c6424d76a107ce849a8aeca7abc22cc2, type: 3}
+  - {fileID: 685111015108294694, guid: bd1dffa1cd2ba90449ec7aa4babda195, type: 3}
+  - {fileID: 8648544374637047684, guid: 9d3767db9770b7144b72c70e7adc152e, type: 3}
+  - {fileID: 1372298984409663155, guid: cca1a155c73efb84d879ece09437825f, type: 3}
+  - {fileID: 4561091054523060484, guid: e106c95ca06624f409d78a53760ac599, type: 3}
+  - {fileID: 2171889842896888308, guid: f1e8e15724c238b4a9a5df97d313c125, type: 3}
   redMat: {fileID: 2100000, guid: 87bb4a1b48ff37f409f7664ed7371a4e, type: 2}
   state: 0
   orientation: 0
   selected: 0
-  gameManager: {fileID: 0}
   gameManScript: {fileID: 0}
   emptyRenderer: {fileID: 6563206820552401488}
 --- !u!1001 &25888632213544971
@@ -289,7 +304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6930562535076146528, guid: 36cf722de315fff42a16240c21372541, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7738764482140731354, guid: 36cf722de315fff42a16240c21372541, type: 3}
       propertyPath: m_RootOrder

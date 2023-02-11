@@ -6,18 +6,17 @@ using Coherence.Toolkit;
 
 public class GameManager : MonoBehaviour
 {
-	public CoherenceMonoBridge bridge;
+	private CoherenceMonoBridge bridge;
 	private string P1, P2;
 
 	public GameObject Ground;
 
-	[Sync]
 	public Dictionary<Vector3Int, Tile> hexTileDict;
 	public GameState gameState;
 
 	void Start()
 	{
-		hexTileDict = Ground.GetComponent<GenerateMap>().generateMap();
+		hexTileDict = Ground.GetComponent<GenerateMap>().populateDictionary();
 		P1 = "Player 1";
 		P2 = "Player 2";
 		gameState = GameState.P1TURN;
@@ -36,7 +35,7 @@ public class GameManager : MonoBehaviour
 			return;
 		}
 		RoomData rm = RoomScript.joinedRoomData;
-		StartCoroutine(JoinRoom(rm));
+		// StartCoroutine(JoinRoom(rm));
 	}
 
 	public IEnumerator JoinRoom(RoomData roomData)

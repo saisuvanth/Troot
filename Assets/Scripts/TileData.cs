@@ -2,27 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization;
+using Coherence.Toolkit;
+
 
 
 public class TileData : MonoBehaviour
 {
-	public Transform[] arr;
+
+
+	public List<GameObject> meshes;
+
+	// public Transform[] arr;
 	public Material redMat;
-	public string state;
-	public float orientation;
+	[Sync]
+	public int state;
+	[Sync]
+	public int orientation;
 	public bool selected = false;
 	// public GameObject gameManager;
-	public GameManager gameManScript;
+	private GameManager gameManager;
 	private Vector3Int cubePoint;
 
-	public MeshRenderer emptyRenderer;
 	// Start is called before the first frame update
 	public void Start()
 	{
-		arr = this.GetComponentsInChildren<Transform>(true);
+		// arr = this.GetComponentsInChildren<Transform>(true);
 		state = TileDataState.EMPTY;
 		cubePoint = GenerateMap.OddToCube(GenerateMap.WorldToOdd(transform.position));
-		gameManScript = FindObjectOfType<GameManager>();
+		gameManager = FindObjectOfType<GameManager>();
 		// gamManScript = gameManager.GetComponent<GameManager>();
 	}
 
@@ -40,7 +47,7 @@ public class TileData : MonoBehaviour
 	}
 
 
-	void CalculateTileDataState(Dictionary<Vector3Int, Tile> hexTileDict)
+	void SetStateAndOrientation(Dictionary<Vector3Int, Tile> hexTileDict)
 	{
 		int neighbours = 0;
 		Vector3Int vec_tl = (cubePoint + new Vector3Int(0, -1, 1));
@@ -225,124 +232,82 @@ public class TileData : MonoBehaviour
 		{
 			case TileState.P1OCCUPIED:
 			case TileState.P1ROOT:
-				emptyRenderer.materials[1].color = Color.blue;
+				GetComponent<MeshRenderer>().materials[1].color = Color.blue;
 				break;
 			case TileState.P2OCCUPIED:
 			case TileState.P2ROOT:
-				emptyRenderer.materials[1].color = Color.red;
+				GetComponent<MeshRenderer>().materials[1].color = Color.red;
 				break;
 			default:
 				break;
 		}
-		if (hexTileDict[cubePoint].state != TileState.EMPTY) CalculateTileDataState(hexTileDict);
+		if (hexTileDict[cubePoint].state != TileState.EMPTY) SetStateAndOrientation(hexTileDict);
 		// if (hexTileDict[cubePoint].state == TileState.FILLED) return;
-		foreach (var obj in arr)
-		{
-			if (obj == transform) continue;
-			obj.transform.rotation = Quaternion.Euler(0, orientation, 0);
-			if (hexTileDict[cubePoint].state == TileState.P1ROOT || hexTileDict[cubePoint].state == TileState.P2ROOT)
-			{
-				// state=TileDataState.D_1;
-				if (obj.name == TileDataState.ROOT) obj.gameObject.SetActive(true);
-				else obj.gameObject.SetActive(false);
-			}
-			if (state == TileDataState.D1_1)
-			{
-				if (obj.name == TileDataState.D1_1) obj.gameObject.SetActive(true);
-				else obj.gameObject.SetActive(false);
-			}
-			else if (state == TileDataState.D2_1)
-			{
-				if (obj.name == TileDataState.D2_1) obj.gameObject.SetActive(true);
-				else obj.gameObject.SetActive(false);
-			}
-			else if (state == TileDataState.D2_2)
-			{
-				if (obj.name == TileDataState.D2_2) obj.gameObject.SetActive(true);
-				else obj.gameObject.SetActive(false);
-			}
-			else if (state == TileDataState.D2_3)
-			{
-				if (obj.name == TileDataState.D2_3) obj.gameObject.SetActive(true);
-				else obj.gameObject.SetActive(false);
-			}
-			else if (state == TileDataState.D3_1)
-			{
-				if (obj.name == TileDataState.D3_1) obj.gameObject.SetActive(true);
-				else obj.gameObject.SetActive(false);
-			}
-			else if (state == TileDataState.D3_2)
-			{
-				if (obj.name == TileDataState.D3_2) obj.gameObject.SetActive(true);
-				else obj.gameObject.SetActive(false);
-			}
-			else if (state == TileDataState.D3_3)
-			{
-				if (obj.name == TileDataState.D3_3) obj.gameObject.SetActive(true);
-				else obj.gameObject.SetActive(false);
-			}
-			else if (state == TileDataState.D3_4)
-			{
-				if (obj.name == TileDataState.D3_4) obj.gameObject.SetActive(true);
-				else obj.gameObject.SetActive(false);
-			}
-			else if (state == TileDataState.D4_1)
-			{
-				if (obj.name == TileDataState.D4_1) obj.gameObject.SetActive(true);
-				else obj.gameObject.SetActive(false);
-			}
-			else if (state == TileDataState.D4_2)
-			{
-				if (obj.name == TileDataState.D4_2) obj.gameObject.SetActive(true);
-				else obj.gameObject.SetActive(false);
-			}
-			else if (state == TileDataState.D4_3)
-			{
-				if (obj.name == TileDataState.D4_3) obj.gameObject.SetActive(true);
-				else obj.gameObject.SetActive(false);
-			}
-			else if (state == TileDataState.D5_1)
-			{
-				if (obj.name == TileDataState.D5_1) obj.gameObject.SetActive(true);
-				else obj.gameObject.SetActive(false);
-			}
-			else if (state == TileDataState.D6_1)
-			{
-				if (obj.name == TileDataState.D6_1) obj.gameObject.SetActive(true);
-				else obj.gameObject.SetActive(false);
-			}
-			if (obj.name == TileDataState.EMPTY) obj.gameObject.SetActive(true);
-		}
+
+	}
+
+	public void Update()
+	{
+		UpdateCurrentMesh();
+	}
+
+	private List<string> meshMap = new List<string>()
+	{
+		"empty",
+		"1_1",
+		"2_1",
+		"2_2",
+		"2_3",
+		"3_1",
+		"3_2",
+		"3_3",
+		"3_4",
+		"4_1",
+		"4_2",
+		"4_3",
+		"5_1",
+		"6_1",
+		"root"
+	};
+
+	public void UpdateCurrentMesh()
+	{
+		GameObject temp = GameObject.Find(meshMap[state]);
+		GetComponent<MeshFilter>().mesh = temp.GetComponent<MeshFilter>().mesh;
+		GetComponent<MeshRenderer>().materials = temp.GetComponent<MeshRenderer>().materials;
+		transform.rotation = Quaternion.Euler(0, orientation, 0);
+
 	}
 }
 
 
+
 public class TileDataState
 {
-	public static string EMPTY = "empty";
-	public static string D1_1 = "1_1";
-	public static string D2_1 = "2_1";
-	public static string D2_2 = "2_2"
+	public static int EMPTY = 0;
+	public static int D1_1 = 1;
+	public static int D2_1 = 2;
+	public static int D2_2 = 3
 	;
-	public static string D2_3 = "2_3"
+	public static int D2_3 = 4
 	;
-	public static string D3_1 = "3_1"
+	public static int D3_1 = 5
 	;
-	public static string D3_2 = "3_2"
+	public static int D3_2 = 6
 	;
-	public static string D3_3 = "3_3"
+	public static int D3_3 = 7
 	;
-	public static string D3_4 = "3_4"
+	public static int D3_4 = 8
 	;
-	public static string D4_1 = "4_1"
+	public static int D4_1 = 9
 	;
-	public static string D4_2 = "4_2"
+	public static int D4_2 = 10
 	;
-	public static string D4_3 = "4_3"
+	public static int D4_3 = 11
 	;
-	public static string D5_1 = "5_1"
+	public static int D5_1 = 12
 	;
-	public static string D6_1 = "6_1";
-	public static string ROOT = "root";
+	public static int D6_1 = 13;
+	public static int ROOT = 14;
 
 }
