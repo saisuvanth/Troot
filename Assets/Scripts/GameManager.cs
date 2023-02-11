@@ -6,7 +6,7 @@ using Coherence.Toolkit;
 
 public class GameManager : MonoBehaviour
 {
-	private CoherenceMonoBridge bridge;
+	public CoherenceMonoBridge bridge;
 	private string P1, P2;
 
 	public GameObject Ground;
@@ -35,11 +35,13 @@ public class GameManager : MonoBehaviour
 			return;
 		}
 		RoomData rm = RoomScript.joinedRoomData;
-		// StartCoroutine(JoinRoom(rm));
+		Debug.Log(bridge);
+		JoinRoom(rm);
 	}
 
-	public IEnumerator JoinRoom(RoomData roomData)
+	public void JoinRoom(RoomData roomData)
 	{
+		Debug.Log(bridge);
 		try
 		{
 			bridge.JoinRoom(roomData);
@@ -50,16 +52,15 @@ public class GameManager : MonoBehaviour
 		{
 			Debug.Log("Error: " + e);
 		}
-		yield return new WaitForSeconds(1);
 	}
 
 	public async void LeaveRoom()
 	{
 		// @saisuvanth @FreSauce check that the current user is the creator. If not, then don't allow them to leave the room.
 
-		if(RoomScript.selectedRegion=="")
+		if (RoomScript.selectedRegion == "")
 		{
-			return ;
+			return;
 		}
 
 		try
@@ -67,7 +68,7 @@ public class GameManager : MonoBehaviour
 			Debug.Log("RoomScript.selectedRegion: " + RoomScript.selectedRegion);
 			Debug.Log("RoomScript.joinedRoomData.Id: " + RoomScript.joinedRoomData.UniqueId);
 			Debug.Log("RoomScript.joinedRoomData.Secret: " + RoomScript.joinedRoomData.Secret);
-			await PlayResolver.RemoveRoom(RoomScript.selectedRegion,RoomScript.joinedRoomData.UniqueId,RoomScript.joinedRoomData.Secret);
+			await PlayResolver.RemoveRoom(RoomScript.selectedRegion, RoomScript.joinedRoomData.UniqueId, RoomScript.joinedRoomData.Secret);
 			UnityEngine.SceneManagement.SceneManager.LoadScene("MenuScene");
 		}
 		catch (System.Exception e)
@@ -76,7 +77,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	
+
 }
 
 public class Tile

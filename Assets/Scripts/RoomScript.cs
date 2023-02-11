@@ -68,9 +68,11 @@ public class RoomScript : MonoBehaviour
 			{
 				var creatorName = PlayerPrefs.GetString("Username");
 				Debug.Log(selectedRegion);
-				RoomCreationOptions options = new RoomCreationOptions();
-				options.Tags = new string[] { creatorName };
+				RoomCreationOptions options = RoomCreationOptions.Default;
+				options = RoomCreationOptions.Default;
+				options.KeyValues = new Dictionary<string, string> { { RoomData.RoomNameKey, creatorName } };
 				options.MaxClients = 2;
+				options.Tags = new string[] { creatorName };
 				var roomData = await PlayResolver.CreateRoom(selectedRegion, options);
 
 				joinedRoomData = roomData;
