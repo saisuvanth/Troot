@@ -1308,7 +1308,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 10
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1354,7 +1354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 1496212443}
-  _distance: 12
+  _distance: 80
   _damping: 2
 --- !u!1 &1171762296
 GameObject:
