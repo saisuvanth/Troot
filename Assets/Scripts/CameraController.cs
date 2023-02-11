@@ -106,7 +106,7 @@ public class CameraController : MonoBehaviour
 
             float difference = currentMagnitude - prevMagnitude;
 
-            Camera.main.fieldOfView -= difference * 0.1f;
+            Camera.main.fieldOfView -= difference * 0.05f;
         }
 
         transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime*movementTime);
