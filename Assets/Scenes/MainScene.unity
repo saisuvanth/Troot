@@ -1308,7 +1308,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 10
+  field of view: 15
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1334,7 +1334,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1152446576}
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: -6.1237245, y: 3, z: -6.123724}
+  m_LocalPosition: {x: -33.9, y: 26.9, z: -33.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1350,12 +1350,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1152446576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ac4736d41f81b747a8eee6561e982dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 7677e716a16c574458da6f8763d41a73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 1496212443}
-  _distance: 80
-  _damping: 2
+  movementSpeed: 1
+  movementTime: 10
+  newPosition: {x: -33.9, y: 26.9, z: -33.3}
+  dragStartPosition: {x: 0, y: 0, z: 0}
+  dragCurrentPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1171762296
 GameObject:
   m_ObjectHideFlags: 0
@@ -2617,7 +2619,7 @@ PrefabInstance:
     - target: {fileID: 3932090759108091602, guid: 18bf6950f1bf6984a85e638b305a8931, type: 3}
       propertyPath: _cam
       value: 
-      objectReference: {fileID: 1152446580}
+      objectReference: {fileID: 0}
     - target: {fileID: 3932090759108091602, guid: 18bf6950f1bf6984a85e638b305a8931, type: 3}
       propertyPath: camera
       value: 
