@@ -69,12 +69,13 @@ public class GameManager : MonoBehaviour
 			Debug.Log("RoomScript.joinedRoomData.Id: " + RoomScript.joinedRoomData.UniqueId);
 			Debug.Log("RoomScript.joinedRoomData.Secret: " + RoomScript.joinedRoomData.Secret);
 			await PlayResolver.RemoveRoom(RoomScript.selectedRegion, RoomScript.joinedRoomData.UniqueId, RoomScript.joinedRoomData.Secret);
-			UnityEngine.SceneManagement.SceneManager.LoadScene("MenuScene");
 		}
 		catch (System.Exception e)
 		{
 			Debug.Log("Error: " + e);
 		}
+
+		UnityEngine.SceneManagement.SceneManager.LoadScene("MenuScene");
 	}
 
 

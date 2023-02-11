@@ -61,4 +61,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
-  _cam: {fileID: 0}
