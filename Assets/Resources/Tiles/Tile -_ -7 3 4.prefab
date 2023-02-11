@@ -129,7 +129,7 @@ MonoBehaviour:
   - {fileID: 8648544374637047684, guid: 9d3767db9770b7144b72c70e7adc152e, type: 3}
   - {fileID: 1372298984409663155, guid: cca1a155c73efb84d879ece09437825f, type: 3}
   - {fileID: 4561091054523060484, guid: e106c95ca06624f409d78a53760ac599, type: 3}
-  - {fileID: 2171889842896888308, guid: f1e8e15724c238b4a9a5df97d313c125, type: 3}
+  - {fileID: 5849044198353106826, guid: 364668b13fdbd08429c166a9078bf95e, type: 3}
   redMat: {fileID: 2100000, guid: 87bb4a1b48ff37f409f7664ed7371a4e, type: 2}
   state: 0
   orientation: 0
