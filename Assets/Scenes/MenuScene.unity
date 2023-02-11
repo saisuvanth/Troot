@@ -712,83 +712,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 322586249}
   m_CullTransparentMesh: 1
---- !u!1 &331610583
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 331610586}
-  - component: {fileID: 331610585}
-  - component: {fileID: 331610584}
-  m_Layer: 0
-  m_Name: coherence Mono Bridge
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &331610584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331610583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 445055bd8316f4833b9155d4af800aa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  networkPrefix: '[network] '
-  debugMode: 0
-  adjustSimulationFrameByPing: 0
-  globalQueryOn: 1
-  ClientConnectionPrefab: {fileID: 0}
-  SimulatorConnectionPrefab: {fileID: 0}
-  IsSingleton: 0
-  controlTimeScale: 1
-  onConnected:
-    m_PersistentCalls:
-      m_Calls: []
-  onDisconnected:
-    m_PersistentCalls:
-      m_Calls: []
-  onConnectionError:
-    m_PersistentCalls:
-      m_Calls: []
-  onLiveQuerySynced:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &331610585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331610583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 289f2e78e9f2bfa469e3cfe4e6705388, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &331610586
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331610583}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &352064502
 GameObject:
   m_ObjectHideFlags: 0
@@ -3848,13 +3771,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabTile: {fileID: 6809365534666586368, guid: 012662e40d6105e4a9a80525eef08842, type: 3}
-  prefabTile1: {fileID: 0}
-  prefabTile2: {fileID: 0}
-  prefabTile3: {fileID: 0}
-  prefabTile4: {fileID: 0}
-  prefabTile5: {fileID: 0}
-  prefabTile6: {fileID: 0}
-  mapLength: 7
 --- !u!1 &1516234542
 GameObject:
   m_ObjectHideFlags: 0
