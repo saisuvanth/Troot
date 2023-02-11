@@ -18,11 +18,18 @@ public class OptionsMenu : MonoBehaviour
 
     public void quitGame()
     {
-        #if UNITY_STANDALONE
+        #if UNITY_IOS
             Application.Quit();
         #endif
+
+        #if UNITY_ANDROID
+            Application.Quit();
+        #endif
+
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
         #endif
     }
 }
