@@ -52,13 +52,11 @@ public class PlayerInput : MonoBehaviour
     Vector3Int cubePoint = new Vector3Int((int)cubePointV3.x, (int)cubePointV3.y, (int)cubePointV3.z);
     Debug.Log("clicked on other client " + cubePoint);
     GameState state = gameManager.gameState;
-    Debug.Log("dic state: " + gameManager.hexTileDict[cubePoint].state);
     if (gameManager.hexTileDict.ContainsKey(cubePoint))
     {
       if (gameManager.hexTileDict[cubePoint].state == TileState.EMPTY)
       {
         Tile[] nTiles = gameManager.hexTileDict[cubePoint].GetNeighbours(gameManager.hexTileDict, cubePoint);
-        Debug.Log("nTiles length: " + nTiles.Length);
         foreach (var tile in nTiles)
         {
           if (tile != null && (tile.state == (state == GameState.P1TURN ? TileState.P1OCCUPIED : TileState.P2OCCUPIED) || tile.state == (state == GameState.P1TURN ? TileState.P1ROOT : TileState.P2ROOT)))
@@ -70,7 +68,7 @@ public class PlayerInput : MonoBehaviour
         }
         GameObject obj = GameObject.Find(string.Format("Tile -> {0} {1} {2}", cubePoint.x, cubePoint.y, cubePoint.z));
         obj.GetComponent<TileData>().tileUpdate(gameManager.hexTileDict);
-        // gameManager.updateScore();
+        gameManager.updateScore();
       }
     }
   }
