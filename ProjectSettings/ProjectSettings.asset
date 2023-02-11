@@ -710,6 +710,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
   scriptingDefineSymbols:
+    Android: 
     Standalone: 
   additionalCompilerArguments: {}
   platformArchitecture: {}
