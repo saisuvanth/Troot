@@ -13,7 +13,7 @@ public class RoomScript : MonoBehaviour
 	public TMP_InputField roomName;
 	public TextMeshProUGUI roomErrorText;
 
-	private string selectedRegion;
+	public static string selectedRegion;
 	public static RoomData joinedRoomData;
 
 	public void Start()
@@ -117,16 +117,4 @@ public class RoomScript : MonoBehaviour
 	}
 
 
-	public static async void LeaveRoom()
-	{
-		try
-		{
-			// Add the code to RemoveRoom if the user is the creator
-			UnityEngine.SceneManagement.SceneManager.LoadScene("MenuScene");
-		}
-		catch (System.Exception e)
-		{
-			Debug.Log("Error: " + e);
-		}
-	}
 }

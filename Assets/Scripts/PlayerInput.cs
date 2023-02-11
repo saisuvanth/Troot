@@ -9,32 +9,29 @@ public class PlayerInput : MonoBehaviour
 
 
 	// Update is called once per frame 
-	public new OrbitCamera _cam;
+	// public new OrbitCamera _cam;
 
 	private Vector3 _prevMousePos;
 
 	void Update()
 	{
-		const int LeftButton = 0;
-		if (Input.GetMouseButton(LeftButton))
-		{
-			// mouse movement in pixels this frame
-			Vector3 mouseDelta = Input.mousePosition - _prevMousePos;
+		// const int LeftButton = 0;
+		// if (Input.GetMouseButton(LeftButton))
+		// {
+		// 	Vector3 mouseDelta = Input.mousePosition - _prevMousePos;
+		// 	Vector3 moveDelta = mouseDelta * (360f / Screen.height);
 
-			// adjust to screen size
-			Vector3 moveDelta = mouseDelta * (360f / Screen.height);
-
-			_cam.Move(moveDelta.x, -moveDelta.y);
-		}
-		if (Input.GetAxis("Mouse ScrollWheel") > 0f)
-		{
-			_cam._distance -= 1;
-		}
-		else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
-		{
-			_cam._distance += 1;
-		}
-		_prevMousePos = Input.mousePosition;
+		// 	_cam.Move(moveDelta.x, -moveDelta.y);
+		// }
+		// if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+		// {
+		// 	_cam._distance -= 1;
+		// }
+		// else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+		// {
+		// 	_cam._distance += 1;
+		// }
+		// _prevMousePos = Input.mousePosition;
 		DetectClick();
 	}
 
