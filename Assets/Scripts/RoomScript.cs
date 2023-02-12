@@ -15,9 +15,13 @@ public class RoomScript : MonoBehaviour
 	public static string selectedRegion;
 	public static RoomData joinedRoomData;
 
-	public void Start()
+	public void Awake()
 	{
 		RoomStart();
+	}
+
+	public void Start()
+	{
 	}
 
 	private async void RoomStart()
