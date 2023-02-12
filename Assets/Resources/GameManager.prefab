@@ -48,11 +48,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bridge: {fileID: 0}
+  sync: {fileID: 0}
   Ground: {fileID: 0}
   gameState: 0
   P1score: 0
   P2score: 0
   maxScore: 0
+  p1Root: {x: 0, y: 0, z: 0}
+  p2Root: {x: 0, y: 0, z: 0}
 --- !u!114 &3932090759108091602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +69,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
+  winBanner: {fileID: 0}
+  loseBanner: {fileID: 0}
+  drawBanner: {fileID: 0}
 --- !u!114 &6891639327978363704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +151,7 @@ MonoBehaviour:
   - rid: 357470199928586564
   - rid: 5023203814485524480
   - rid: 5023203814485524482
+  - rid: 5023203822155596308
   onNetworkedInstantiation:
     m_PersistentCalls:
       m_Calls: []
@@ -391,6 +398,47 @@ MonoBehaviour:
         bindingType:
           assemblyQualifiedName: Coherence.Toolkit.Bindings.ValueBindings.IntBinding,
             Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        oldName: 
+        oldParameterAssemblyTypes: []
+    - rid: 5023203822155596308
+      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        descriptor:
+          rid: 5023203822155596309
+        routing: 1
+        isPredicted: 0
+        defaultInterpolationPath: 
+        guid: 4b50aeb4-f96e-4621-82de-6ec60f69ff0d
+        archetypeData:
+          type: 0
+          minRange: 0
+          maxRange: 0
+          sampleRate: 0
+          floatCompression: 0
+          fields: []
+          sharedBinding: {fileID: 0}
+        unityComponent: {fileID: 3932090759108091602}
+        coherenceSync: {fileID: 0}
+        interpolationSettings: {fileID: 11400000, guid: ae4419d1d9a8643709bf5f6b90c584a5, type: 2}
+    - rid: 5023203822155596309
+      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        name: onEndGame
+        monoAssemblyType: 
+        required: 0
+        enforcesLODingWhenFieldsOverriden: 0
+        valueSyncCallbackName: 
+        memberType: 8
+        parameterAssemblyTypes:
+        - System.Int32, mscorlib
+        ownerType:
+          assemblyQualifiedName: PlayerInput, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+            PublicKeyToken=null
+        CustomData:
+          rid: -2
+        bindingType:
+          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
     - rid: 8977675434791272450

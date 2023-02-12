@@ -8,7 +8,6 @@ using System;
 public class GameManager : MonoBehaviour
 {
 	public CoherenceMonoBridge bridge;
-
 	public GameObject Ground;
 
 	public Dictionary<Vector3Int, Tile> hexTileDict;
@@ -35,7 +34,6 @@ public class GameManager : MonoBehaviour
 	{
 		hexTileDict = Ground.GetComponent<GenerateMap>().populateDictionary();
 		gameState = (int)GameState.P1TURN;
-
 		// Set the root tiles
 		foreach (KeyValuePair<Vector3Int, Tile> entry in hexTileDict)
 		{
@@ -50,8 +48,6 @@ public class GameManager : MonoBehaviour
 		}
 
 	}
-
-
 
 	public void JoinRoom(RoomData roomData)
 	{
@@ -98,7 +94,6 @@ public class GameManager : MonoBehaviour
 		UnityEngine.SceneManagement.SceneManager.LoadScene("MenuScene");
 	}
 
-
 	public void updateScore()
 	{
 		int mapLength = GenerateMap.mapLength;
@@ -136,8 +131,8 @@ public class GameManager : MonoBehaviour
 	public void isDecayed()
 	{
 
-		Dictionary<Vector3Int, bool> isOccupiedByP1=new Dictionary<Vector3Int, bool>();
-		Dictionary<Vector3Int, bool> isOccupiedByP2=new Dictionary<Vector3Int, bool>();
+		Dictionary<Vector3Int, bool> isOccupiedByP1 = new Dictionary<Vector3Int, bool>();
+		Dictionary<Vector3Int, bool> isOccupiedByP2 = new Dictionary<Vector3Int, bool>();
 
 		foreach (KeyValuePair<Vector3Int, Tile> entry in hexTileDict)
 		{
@@ -151,25 +146,25 @@ public class GameManager : MonoBehaviour
 			}
 		}
 
-		checkForDecay(p1Root,ref isOccupiedByP1,Player.P1);
-		checkForDecay(p2Root,ref isOccupiedByP2,Player.P2);
+		checkForDecay(p1Root, ref isOccupiedByP1, Player.P1);
+		checkForDecay(p2Root, ref isOccupiedByP2, Player.P2);
 
-		foreach(KeyValuePair<Vector3Int,bool> entry in isOccupiedByP1)
+		foreach (KeyValuePair<Vector3Int, bool> entry in isOccupiedByP1)
 		{
-			hexTileDict[entry.Key].state=TileState.P1DECAYED;
+			hexTileDict[entry.Key].state = TileState.P1DECAYED;
 			hexTileDict[entry.Key].transform.GetComponent<TileData>().tileUpdate(hexTileDict);
 		}
 
-		foreach(KeyValuePair<Vector3Int,bool> entry in isOccupiedByP2)
+		foreach (KeyValuePair<Vector3Int, bool> entry in isOccupiedByP2)
 		{
 
-			hexTileDict[entry.Key].state=TileState.P2DECAYED;
+			hexTileDict[entry.Key].state = TileState.P2DECAYED;
 			hexTileDict[entry.Key].transform.GetComponent<TileData>().tileUpdate(hexTileDict);
 		}
 
 	}
 
-	public void checkForDecay(Vector3Int src,ref Dictionary<Vector3Int, bool> isOccupiedDict,Player currentPlayer)
+	public void checkForDecay(Vector3Int src, ref Dictionary<Vector3Int, bool> isOccupiedDict, Player currentPlayer)
 	{
 		Queue<Vector3Int> q = new Queue<Vector3Int>();
 
@@ -181,20 +176,20 @@ public class GameManager : MonoBehaviour
 		while (q.Count > 0)
 		{
 			Vector3Int u = q.Dequeue();
-			Debug.Log("BFS : "+q);
+			Debug.Log("BFS : " + q);
 
 			Tile[] neighbours = hexTileDict[u].GetNeighbours(hexTileDict, u);
 
 			foreach (Tile v in neighbours)
 			{
-				if(v==null)
+				if (v == null)
 				{
 					continue;
 				}
 
 				Vector3Int vCube = v.WorldToTile();
 
-				if (!visited.ContainsKey(vCube)&&isOccupiedDict.ContainsKey(vCube))
+				if (!visited.ContainsKey(vCube) && isOccupiedDict.ContainsKey(vCube))
 				{
 					isOccupiedDict.Remove(vCube);
 					q.Enqueue(vCube);
@@ -206,6 +201,76 @@ public class GameManager : MonoBehaviour
 	}
 
 
+	public Vector2Int CheckPossibleMoves()
+	{
+		Vector2Int possibleMoves = new Vector2Int(0, 0);
+		for (int q = -GenerateMap.mapLength; q <= GenerateMap.mapLength; q++)
+		{
+			for (int r = -GenerateMap.mapLength; r <= GenerateMap.mapLength; r++)
+			{
+				for (int s = -GenerateMap.mapLength; s <= GenerateMap.mapLength; s++)
+				{
+					if (q + r + s == 0)
+					{
+						if (hexTileDict[new Vector3Int(q, r, s)].state == TileState.P1OCCUPIED || hexTileDict[new Vector3Int(q, r, s)].state == TileState.P1ROOT)
+						{
+							Tile[] neighbours = hexTileDict[new Vector3Int(q, r, s)].GetNeighbours(hexTileDict, new Vector3Int(q, r, s));
+							foreach (Tile neighbour in neighbours)
+							{
+								if (neighbour != null)
+								{
+									if (neighbour.state == TileState.EMPTY)
+									{
+										possibleMoves.x++;
+									}
+								}
+							}
+						}
+						if (hexTileDict[new Vector3Int(q, r, s)].state == TileState.P1OCCUPIED || hexTileDict[new Vector3Int(q, r, s)].state == TileState.P1ROOT)
+						{
+							Tile[] neighbours = hexTileDict[new Vector3Int(q, r, s)].GetNeighbours(hexTileDict, new Vector3Int(q, r, s));
+							foreach (Tile neighbour in neighbours)
+							{
+								if (neighbour != null)
+								{
+									if (neighbour.state == TileState.EMPTY)
+									{
+										possibleMoves.y++;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		return possibleMoves;
+	}
+
+	public GameState CheckWinningCondition()
+	{
+		Vector2Int possibleMoves = CheckPossibleMoves();
+		if (possibleMoves.x == 0 || possibleMoves.y == 0)
+		{
+			if (P1score + possibleMoves.x > P2score + possibleMoves.y)
+			{
+				Debug.Log("Player 1 Wins");
+				return GameState.P1WIN;
+			}
+			else if (P2score + possibleMoves.y > P1score + possibleMoves.x)
+			{
+				Debug.Log("Player 2 Wins");
+				return GameState.P2WIN;
+			}
+			else
+			{
+				Debug.Log("Draw");
+				return GameState.DRAW;
+			}
+		}
+		Debug.Log("Draw");
+		return GameState.P1TURN;
+	}
 }
 
 public class Tile
@@ -261,7 +326,7 @@ public enum TileState
 
 public enum Player
 {
-	P1, P2
+	P1, P2, NONE
 }
 
 public enum GameState

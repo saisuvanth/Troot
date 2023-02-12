@@ -289,7 +289,7 @@ public class TileData : MonoBehaviour
 		}
 		catch (Exception e)
 		{
-			Debug.Log(state);
+			Debug.Log(e);
 		}
 	}
 }

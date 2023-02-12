@@ -102,7 +102,7 @@ public class RoomScript : MonoBehaviour
 			{
 
 				Debug.Log("Room Data: " + roomData[0]);
-				joinedRoomData = roomData[0];
+				joinedRoomData = roomData[roomData.Count - 1];
 				UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
 				// JoinRoom(roomData[0]);
 			}

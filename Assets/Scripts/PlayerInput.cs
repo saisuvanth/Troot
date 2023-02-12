@@ -11,6 +11,11 @@ public class PlayerInput : MonoBehaviour
 
 	private CoherenceSync coherenceSync;
 	private GameManager gameManager;
+	public GameObject winBanner;
+	public GameObject loseBanner;
+	public GameObject drawBanner;
+
+	// public AudioSource clickSound;
 
 	private Vector3 _prevMousePos;
 
@@ -29,6 +34,7 @@ public class PlayerInput : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
+			GameObject.Find("ClickAudio").GetComponent<ClickAudio>().PlayClick();
 			Vector3 mousPos = Input.mousePosition;
 			Ray ray = camera.ScreenPointToRay(mousPos);
 			ray.origin = camera.transform.position;
@@ -49,6 +55,7 @@ public class PlayerInput : MonoBehaviour
 	public void onClick(Vector3 cubePointV3, Vector3 start, Vector3 end, int currentPlayer)
 	{
 		Debug.DrawLine(start, end, Color.red, 10f);
+		Debug.Log(currentPlayer);
 		Player p = (Player)currentPlayer;
 		Vector3Int cubePoint = new Vector3Int((int)cubePointV3.x, (int)cubePointV3.y, (int)cubePointV3.z);
 		if (p == Player.P1 && gameManager.gameState == (int)GameState.P1TURN)
@@ -67,16 +74,35 @@ public class PlayerInput : MonoBehaviour
 	{
 		foreach (var tile in nTiles)
 		{
-			if (tile != null && (tile.state == (currentTurn == GameState.P1TURN ? TileState.P2OCCUPIED : currentTurn == GameState.P2TURN ? TileState.P1OCCUPIED : TileState.EMPTY)))
+			if (tile == null) continue;
+			if (tile.state == TileState.EMPTY) continue;
+			if (currentTurn == GameState.P1TURN)
 			{
-				tile.state = currentTurn == GameState.P1TURN ? TileState.P2DECAYED : currentTurn == GameState.P2TURN ? TileState.P1DECAYED : tile.state;
-				tile.transform.GetComponent<TileData>().tileUpdate(gameManager.hexTileDict);
+				if (tile.state == TileState.P2OCCUPIED)
+				{
+					tile.state = TileState.P2DECAYED;
+					tile.transform.GetComponent<TileData>().tileUpdate(gameManager.hexTileDict);
+				}
 			}
+			else if (currentTurn == GameState.P2TURN)
+			{
+				if (tile.state == TileState.P1OCCUPIED)
+				{
+					tile.state = TileState.P1DECAYED;
+					tile.transform.GetComponent<TileData>().tileUpdate(gameManager.hexTileDict);
+				}
+			}
+			// if (tile.state == (currentTurn == GameState.P1TURN ? TileState.P2OCCUPIED : currentTurn == GameState.P2TURN ? TileState.P1OCCUPIED : TileState.EMPTY))
+			// {
+			// 	tile.state = currentTurn == GameState.P1TURN ? TileState.P2DECAYED : currentTurn == GameState.P2TURN ? TileState.P1DECAYED : tile.state;
+			// 	tile.transform.GetComponent<TileData>().tileUpdate(gameManager.hexTileDict);
+			// }
 		}
 	}
 
 	public void manageClick(Vector3Int cubePoint, GameState currentTurn)
 	{
+		bool isUpdated = false;
 		Debug.Log("clicked on other client " + cubePoint);
 		// GameState currentTurn = (GameState)gameManager.gameState;
 		if (gameManager.hexTileDict.ContainsKey(cubePoint))
@@ -89,16 +115,54 @@ public class PlayerInput : MonoBehaviour
 					if (tile != null && (tile.state == (currentTurn == GameState.P1TURN ? TileState.P1OCCUPIED : TileState.P2OCCUPIED) || tile.state == (currentTurn == GameState.P1TURN ? TileState.P1ROOT : TileState.P2ROOT)))
 					{
 						gameManager.hexTileDict[cubePoint].state = currentTurn == GameState.P1TURN ? TileState.P1OCCUPIED : TileState.P2OCCUPIED;
-						gameManager.gameState = (int)(currentTurn == GameState.P1TURN ? GameState.P2TURN : GameState.P1TURN);
+						isUpdated = true;
 						tile.transform.GetComponent<TileData>().tileUpdate(gameManager.hexTileDict);
 					}
 				}
-				GameObject obj = GameObject.Find(string.Format("Tile -> {0} {1} {2}", cubePoint.x, cubePoint.y, cubePoint.z));
-				obj.GetComponent<TileData>().tileUpdate(gameManager.hexTileDict);
-				DecayRoots(nTiles, cubePoint, currentTurn);
-				gameManager.isDecayed();
-				gameManager.updateScore();
+				if (isUpdated)
+				{
+					GameObject obj = GameObject.Find(string.Format("Tile -> {0} {1} {2}", cubePoint.x, cubePoint.y, cubePoint.z));
+					obj.GetComponent<TileData>().tileUpdate(gameManager.hexTileDict);
+					DecayRoots(nTiles, cubePoint, currentTurn);
+					gameManager.isDecayed();
+					gameManager.updateScore();
+					gameManager.gameState = (int)(currentTurn == GameState.P1TURN ? GameState.P2TURN : GameState.P1TURN);
+					GameState winningCondition = gameManager.CheckWinningCondition();
+					if (winningCondition != GameState.P1TURN)
+					{
+						coherenceSync.SendCommand<PlayerInput>(nameof(PlayerInput.onEndGame), MessageTarget.All, (int)winningCondition);
+					}
+				}
 			}
+		}
+	}
+	public void onEndGame(int winningCondition)
+	{
+		if ((GameState)winningCondition == GameState.P1WIN)
+		{
+			if (GameManager.currentPlayer == (int)Player.P1)
+			{
+				winBanner.GetComponent<BannerAnimationScript>().showBanner();
+			}
+			else
+			{
+				loseBanner.GetComponent<BannerAnimationScript>().showBanner();
+			}
+		}
+		else if ((GameState)winningCondition == GameState.P2WIN)
+		{
+			if (GameManager.currentPlayer == (int)Player.P2)
+			{
+				winBanner.GetComponent<BannerAnimationScript>().showBanner();
+			}
+			else
+			{
+				loseBanner.GetComponent<BannerAnimationScript>().showBanner();
+			}
+		}
+		else
+		{
+			drawBanner.GetComponent<BannerAnimationScript>().showBanner();
 		}
 	}
 }
