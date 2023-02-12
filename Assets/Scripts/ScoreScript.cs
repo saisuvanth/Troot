@@ -17,7 +17,16 @@ public class ScoreScript : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    scoreText.text = gameManager.P1score.ToString() + "/" + gameManager.P2score.ToString();
-    scoreBarMask.GetComponent<Image>().fillAmount = (float)gameManager.P1score / ((float)gameManager.P1score + (float)gameManager.P2score);
+    if(GameManager.currentPlayer == "Player 1")
+    {
+      scoreText.text = gameManager.P1score.ToString() + "/" + gameManager.P2score.ToString();
+      scoreBarMask.GetComponent<Image>().fillAmount = (float)gameManager.P1score / ((float)gameManager.P1score + (float)gameManager.P2score);
+    }
+    else
+    {
+      scoreText.text = gameManager.P2score.ToString() + "/" + gameManager.P1score.ToString();
+      scoreBarMask.GetComponent<Image>().fillAmount = (float)gameManager.P2score / ((float)gameManager.P1score + (float)gameManager.P2score);
+    }
+    
   }
 }

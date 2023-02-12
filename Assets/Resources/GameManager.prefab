@@ -50,6 +50,9 @@ MonoBehaviour:
   bridge: {fileID: 0}
   Ground: {fileID: 0}
   gameState: 0
+  P1score: 0
+  P2score: 0
+  maxScore: 0
 --- !u!114 &3932090759108091602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,7 +122,7 @@ MonoBehaviour:
     lodLevels:
     - distance: 0
     archetypeName: GameManager_18bf6950f1bf6984a85e638b305a8931
-    GeneratesArchetypeDefinition: 0
+    GeneratesArchetypeDefinition: 1
   InterpolationLocation: 1
   bakedScriptType: Coherence.Generated.CoherenceSyncGameManager, Assembly-CSharp
   approveAuthorityTransferRequests: 1
@@ -138,6 +141,9 @@ MonoBehaviour:
   - rid: 8977675434791272454
   - rid: 8977675434791272456
   - rid: 8977675435369562456
+  - rid: 357470199928586560
+  - rid: 357470199928586562
+  - rid: 357470199928586564
   onNetworkedInstantiation:
     m_PersistentCalls:
       m_Calls: []
@@ -158,6 +164,144 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 357470199928586560
+      type: {class: IntBinding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
+      data:
+        descriptor:
+          rid: 357470199928586561
+        routing: 0
+        isPredicted: 0
+        defaultInterpolationPath: 
+        guid: 5c07ee3d-0130-45eb-bdc4-abab7dcb1d00
+        archetypeData:
+          type: 1
+          minRange: -2147483648
+          maxRange: 2147483647
+          sampleRate: 20
+          floatCompression: 0
+          fields:
+          - type: 1
+            bits: 32
+            minRange: -2147483648
+            maxRange: 2147483647
+            precision: 0
+            floatCompression: 0
+          sharedBinding: {fileID: 0}
+        unityComponent: {fileID: 3932090759108091604}
+        coherenceSync: {fileID: 0}
+        interpolationSettings: {fileID: 11400000, guid: ae4419d1d9a8643709bf5f6b90c584a5, type: 2}
+    - rid: 357470199928586561
+      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        name: P1score
+        monoAssemblyType: System.Int32, mscorlib
+        required: 0
+        enforcesLODingWhenFieldsOverriden: 1
+        valueSyncCallbackName: 
+        memberType: 4
+        parameterAssemblyTypes: []
+        ownerType:
+          assemblyQualifiedName: GameManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+            PublicKeyToken=null
+        CustomData:
+          rid: -2
+        bindingType:
+          assemblyQualifiedName: Coherence.Toolkit.Bindings.ValueBindings.IntBinding,
+            Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        oldName: 
+        oldParameterAssemblyTypes: []
+    - rid: 357470199928586562
+      type: {class: IntBinding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
+      data:
+        descriptor:
+          rid: 357470199928586563
+        routing: 0
+        isPredicted: 0
+        defaultInterpolationPath: 
+        guid: c4b22118-b9d0-4627-b146-9573cf7c45be
+        archetypeData:
+          type: 1
+          minRange: -2147483648
+          maxRange: 2147483647
+          sampleRate: 20
+          floatCompression: 0
+          fields:
+          - type: 1
+            bits: 32
+            minRange: -2147483648
+            maxRange: 2147483647
+            precision: 0
+            floatCompression: 0
+          sharedBinding: {fileID: 0}
+        unityComponent: {fileID: 3932090759108091604}
+        coherenceSync: {fileID: 0}
+        interpolationSettings: {fileID: 11400000, guid: ae4419d1d9a8643709bf5f6b90c584a5, type: 2}
+    - rid: 357470199928586563
+      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        name: P2score
+        monoAssemblyType: System.Int32, mscorlib
+        required: 0
+        enforcesLODingWhenFieldsOverriden: 1
+        valueSyncCallbackName: 
+        memberType: 4
+        parameterAssemblyTypes: []
+        ownerType:
+          assemblyQualifiedName: GameManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+            PublicKeyToken=null
+        CustomData:
+          rid: -2
+        bindingType:
+          assemblyQualifiedName: Coherence.Toolkit.Bindings.ValueBindings.IntBinding,
+            Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        oldName: 
+        oldParameterAssemblyTypes: []
+    - rid: 357470199928586564
+      type: {class: IntBinding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
+      data:
+        descriptor:
+          rid: 357470199928586565
+        routing: 0
+        isPredicted: 0
+        defaultInterpolationPath: 
+        guid: 2d6e43eb-1c5b-4987-bedb-15278f2d49cf
+        archetypeData:
+          type: 1
+          minRange: -2147483648
+          maxRange: 2147483647
+          sampleRate: 20
+          floatCompression: 0
+          fields:
+          - type: 1
+            bits: 32
+            minRange: -2147483648
+            maxRange: 2147483647
+            precision: 0
+            floatCompression: 0
+          sharedBinding: {fileID: 0}
+        unityComponent: {fileID: 3932090759108091604}
+        coherenceSync: {fileID: 0}
+        interpolationSettings: {fileID: 11400000, guid: ae4419d1d9a8643709bf5f6b90c584a5, type: 2}
+    - rid: 357470199928586565
+      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        name: maxScore
+        monoAssemblyType: System.Int32, mscorlib
+        required: 0
+        enforcesLODingWhenFieldsOverriden: 1
+        valueSyncCallbackName: 
+        memberType: 4
+        parameterAssemblyTypes: []
+        ownerType:
+          assemblyQualifiedName: GameManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+            PublicKeyToken=null
+        CustomData:
+          rid: -2
+        bindingType:
+          assemblyQualifiedName: Coherence.Toolkit.Bindings.ValueBindings.IntBinding,
+            Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        oldName: 
+        oldParameterAssemblyTypes: []
     - rid: 8977675434791272450
       type: {class: PositionBinding, ns: Coherence.Toolkit.Bindings.TransformBindings, asm: Coherence.Toolkit}
       data:
@@ -183,7 +327,7 @@ MonoBehaviour:
           sharedBinding: {fileID: 0}
         unityComponent: {fileID: 3932090759108091603}
         coherenceSync: {fileID: 0}
-        interpolationSettings: {fileID: 11400000, guid: ae4419d1d9a8643709bf5f6b90c584a5, type: 2}
+        interpolationSettings: {fileID: 0}
     - rid: 8977675434791272451
       type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
@@ -229,7 +373,7 @@ MonoBehaviour:
           sharedBinding: {fileID: 0}
         unityComponent: {fileID: 3932090759108091602}
         coherenceSync: {fileID: 0}
-        interpolationSettings: {fileID: 11400000, guid: ae4419d1d9a8643709bf5f6b90c584a5, type: 2}
+        interpolationSettings: {fileID: 0}
     - rid: 8977675434791272455
       type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
@@ -275,7 +419,7 @@ MonoBehaviour:
           sharedBinding: {fileID: 0}
         unityComponent: {fileID: 3932090759108091604}
         coherenceSync: {fileID: 0}
-        interpolationSettings: {fileID: 11400000, guid: ae4419d1d9a8643709bf5f6b90c584a5, type: 2}
+        interpolationSettings: {fileID: 0}
     - rid: 8977675434791272457
       type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
@@ -315,7 +459,7 @@ MonoBehaviour:
           sharedBinding: {fileID: 0}
         unityComponent: {fileID: 3932090759108091602}
         coherenceSync: {fileID: 0}
-        interpolationSettings: {fileID: 11400000, guid: ae4419d1d9a8643709bf5f6b90c584a5, type: 2}
+        interpolationSettings: {fileID: 0}
     - rid: 8977675435369562457
       type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
