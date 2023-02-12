@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 	public int P1score;
 	public int P2score;
 	public int maxScore;
+	public Vector3Int p1Root;
+	public Vector3Int p2Root;
 
 	void Awake()
 	{
@@ -33,6 +35,20 @@ public class GameManager : MonoBehaviour
 	{
 		hexTileDict = Ground.GetComponent<GenerateMap>().populateDictionary();
 		gameState = (int)GameState.P1TURN;
+
+		// Set the root tiles
+		foreach (KeyValuePair<Vector3Int, Tile> entry in hexTileDict)
+		{
+			if (entry.Value.state == TileState.P1ROOT)
+			{
+				p1Root = entry.Key;
+			}
+			else if (entry.Value.state == TileState.P2ROOT)
+			{
+				p2Root = entry.Key;
+			}
+		}
+
 	}
 
 
@@ -119,101 +135,74 @@ public class GameManager : MonoBehaviour
 
 	public void isDecayed()
 	{
-		int mapLength = GenerateMap.mapLength;
 
-		for (int q = -mapLength; q <= mapLength; q++)
+		Dictionary<Vector3Int, bool> isOccupiedByP1=new Dictionary<Vector3Int, bool>();
+		Dictionary<Vector3Int, bool> isOccupiedByP2=new Dictionary<Vector3Int, bool>();
+
+		foreach (KeyValuePair<Vector3Int, Tile> entry in hexTileDict)
 		{
-			for (int r = -mapLength; r <= mapLength; r++)
+			if (entry.Value.state == TileState.P1OCCUPIED)
 			{
-				for (int s = -mapLength; s <= mapLength; s++)
-				{
-					if (q + r + s == 0)
-					{
-						if (hexTileDict[new Vector3Int(q, r, s)].state == TileState.P1OCCUPIED)
-						{
-							if (!findRoot(hexTileDict[new Vector3Int(q, r, s)], Player.P1))
-							{
-								hexTileDict[new Vector3Int(q, r, s)].state = TileState.P1DECAYED;
-							}
-						}
-
-						if (hexTileDict[new Vector3Int(q, r, s)].state == TileState.P2OCCUPIED)
-						{
-							if (!findRoot(hexTileDict[new Vector3Int(q, r, s)], Player.P2))
-							{
-								hexTileDict[new Vector3Int(q, r, s)].state = TileState.P2DECAYED;
-							}
-						}
-					}
-				}
+				isOccupiedByP1[entry.Key] = true;
+			}
+			if (entry.Value.state == TileState.P2OCCUPIED)
+			{
+				isOccupiedByP2[entry.Key] = true;
 			}
 		}
+
+		checkForDecay(p1Root,ref isOccupiedByP1,Player.P1);
+		checkForDecay(p2Root,ref isOccupiedByP2,Player.P2);
+
+		foreach(KeyValuePair<Vector3Int,bool> entry in isOccupiedByP1)
+		{
+			hexTileDict[entry.Key].state=TileState.P1DECAYED;
+			hexTileDict[entry.Key].transform.GetComponent<TileData>().tileUpdate(hexTileDict);
+		}
+
+		foreach(KeyValuePair<Vector3Int,bool> entry in isOccupiedByP2)
+		{
+
+			hexTileDict[entry.Key].state=TileState.P2DECAYED;
+			hexTileDict[entry.Key].transform.GetComponent<TileData>().tileUpdate(hexTileDict);
+		}
+
 	}
 
-	public bool findRoot(Tile src, Player currentPlayer)
+	public void checkForDecay(Vector3Int src,ref Dictionary<Vector3Int, bool> isOccupiedDict,Player currentPlayer)
 	{
-		Debug.Log("findRoot");
-		// Add a queue of Vector3Ints
-		Queue<Tile> queue = new Queue<Tile>();
+		Queue<Vector3Int> q = new Queue<Vector3Int>();
 
-		// Maintain a list of visited nodes
-		Dictionary<Tile, bool> visited = new Dictionary<Tile, bool>();
+		Dictionary<Vector3Int, bool> visited = new Dictionary<Vector3Int, bool>();
 
-		// Add the source to the queue
-		queue.Enqueue(src);
-
-		// Mark the source as visited
+		q.Enqueue(src);
 		visited[src] = true;
 
-		// While the queue is not empty
-		while (queue.Count > 0)
+		while (q.Count > 0)
 		{
-			// Dequeue the first element
-			Tile current = queue.Dequeue();
-			Debug.Log("BFS: " + current);
+			Vector3Int u = q.Dequeue();
+			Debug.Log("BFS : "+q);
 
-			// If the current element is the root, return true
-			if (currentPlayer == Player.P1 && current.state == TileState.P1ROOT)
+			Tile[] neighbours = hexTileDict[u].GetNeighbours(hexTileDict, u);
+
+			foreach (Tile v in neighbours)
 			{
-				Debug.Log("found root");
-				return true;
-			}
-
-			if (currentPlayer == Player.P2 && current.state == TileState.P2ROOT)
-			{
-				Debug.Log("found root");
-				return true;
-			}
-
-			// Get the neighbours of the current element
-			Tile[] neighbours = current.GetNeighbours(hexTileDict, current.WorldToTile());
-
-			// For each neighbour
-			for (int i = 0; i < neighbours.Length; i++)
-			{
-
-				// If the neighbour is not null
-				if (neighbours[i] != null && !visited.ContainsKey(neighbours[i]))
+				if(v==null)
 				{
-					if (currentPlayer == Player.P1 && (neighbours[i].state == TileState.P1OCCUPIED || neighbours[i].state == TileState.P1ROOT))
-					{
-						// Add the neighbour to the queue
-						queue.Enqueue(current);
-						visited[current] = true;
-					}
+					continue;
+				}
 
-					if (currentPlayer == Player.P2 && (neighbours[i].state == TileState.P2OCCUPIED || neighbours[i].state == TileState.P2ROOT))
-					{
-						// Add the neighbour to the queue
-						queue.Enqueue(current);
-						visited[current] = true;
-					}
+				Vector3Int vCube = v.WorldToTile();
+
+				if (!visited.ContainsKey(vCube)&&isOccupiedDict.ContainsKey(vCube))
+				{
+					isOccupiedDict.Remove(vCube);
+					q.Enqueue(vCube);
+					visited[vCube] = true;
 				}
 			}
 		}
 
-
-		return false;
 	}
 
 
