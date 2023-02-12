@@ -140,10 +140,11 @@ MonoBehaviour:
   - rid: 8977675434791272450
   - rid: 8977675434791272454
   - rid: 8977675434791272456
-  - rid: 8977675435369562456
   - rid: 357470199928586560
   - rid: 357470199928586562
   - rid: 357470199928586564
+  - rid: 5023203814485524480
+  - rid: 5023203814485524482
   onNetworkedInstantiation:
     m_PersistentCalls:
       m_Calls: []
@@ -302,6 +303,96 @@ MonoBehaviour:
             Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
+    - rid: 5023203814485524480
+      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        descriptor:
+          rid: 5023203814485524481
+        routing: 0
+        isPredicted: 0
+        defaultInterpolationPath: 
+        guid: 997e4124-a026-44f1-8c78-36d873e86b4d
+        archetypeData:
+          type: 0
+          minRange: 0
+          maxRange: 0
+          sampleRate: 0
+          floatCompression: 0
+          fields: []
+          sharedBinding: {fileID: 0}
+        unityComponent: {fileID: 3932090759108091602}
+        coherenceSync: {fileID: 0}
+        interpolationSettings: {fileID: 11400000, guid: ae4419d1d9a8643709bf5f6b90c584a5, type: 2}
+    - rid: 5023203814485524481
+      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        name: onClick
+        monoAssemblyType: 
+        required: 0
+        enforcesLODingWhenFieldsOverriden: 0
+        valueSyncCallbackName: 
+        memberType: 8
+        parameterAssemblyTypes:
+        - UnityEngine.Vector3, UnityEngine
+        - UnityEngine.Vector3, UnityEngine
+        - UnityEngine.Vector3, UnityEngine
+        - System.Int32, mscorlib
+        ownerType:
+          assemblyQualifiedName: PlayerInput, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+            PublicKeyToken=null
+        CustomData:
+          rid: -2
+        bindingType:
+          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        oldName: 
+        oldParameterAssemblyTypes: []
+    - rid: 5023203814485524482
+      type: {class: IntBinding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
+      data:
+        descriptor:
+          rid: 5023203814485524483
+        routing: 0
+        isPredicted: 0
+        defaultInterpolationPath: 
+        guid: 512b1b52-eccb-4435-a0bc-cb1f259b84fa
+        archetypeData:
+          type: 1
+          minRange: -2147483648
+          maxRange: 2147483647
+          sampleRate: 20
+          floatCompression: 0
+          fields:
+          - type: 1
+            bits: 32
+            minRange: -2147483648
+            maxRange: 2147483647
+            precision: 0
+            floatCompression: 0
+          sharedBinding: {fileID: 0}
+        unityComponent: {fileID: 3932090759108091604}
+        coherenceSync: {fileID: 0}
+        interpolationSettings: {fileID: 11400000, guid: ae4419d1d9a8643709bf5f6b90c584a5, type: 2}
+    - rid: 5023203814485524483
+      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        name: gameState
+        monoAssemblyType: System.Int32, mscorlib
+        required: 0
+        enforcesLODingWhenFieldsOverriden: 1
+        valueSyncCallbackName: 
+        memberType: 4
+        parameterAssemblyTypes: []
+        ownerType:
+          assemblyQualifiedName: GameManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+            PublicKeyToken=null
+        CustomData:
+          rid: -2
+        bindingType:
+          assemblyQualifiedName: Coherence.Toolkit.Bindings.ValueBindings.IntBinding,
+            Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        oldName: 
+        oldParameterAssemblyTypes: []
     - rid: 8977675434791272450
       type: {class: PositionBinding, ns: Coherence.Toolkit.Bindings.TransformBindings, asm: Coherence.Toolkit}
       data:
@@ -438,49 +529,6 @@ MonoBehaviour:
         bindingType:
           assemblyQualifiedName: Coherence.Toolkit.Bindings.ValueBindings.BoolBinding,
             Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 8977675435369562456
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 8977675435369562457
-        routing: 0
-        isPredicted: 0
-        defaultInterpolationPath: 
-        guid: 80e2d2f5-6229-4f6a-8691-012ecb3bcffb
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-          sharedBinding: {fileID: 0}
-        unityComponent: {fileID: 3932090759108091602}
-        coherenceSync: {fileID: 0}
-        interpolationSettings: {fileID: 0}
-    - rid: 8977675435369562457
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: onClick
-        monoAssemblyType: 
-        required: 0
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - UnityEngine.Vector3, UnityEngine
-        - UnityEngine.Vector3, UnityEngine
-        - UnityEngine.Vector3, UnityEngine
-        ownerType:
-          assemblyQualifiedName: PlayerInput, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-            PublicKeyToken=null
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
 --- !u!114 &881573139709870275

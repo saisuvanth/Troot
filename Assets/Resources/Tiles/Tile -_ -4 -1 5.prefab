@@ -133,6 +133,7 @@ MonoBehaviour:
   redMat: {fileID: 2100000, guid: 87bb4a1b48ff37f409f7664ed7371a4e, type: 2}
   state: 0
   orientation: 0
+  tileState: 0
   selected: 0
 --- !u!114 &8920877329465069929
 MonoBehaviour:
@@ -213,6 +214,7 @@ MonoBehaviour:
   - rid: 5023203791966831282
   - rid: 5023203791966831283
   - rid: 5023203791966831284
+  - rid: 5023203815625064957
   onNetworkedInstantiation:
     m_PersistentCalls:
       m_Calls: []
@@ -355,6 +357,52 @@ MonoBehaviour:
       type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
         name: orientation
+        monoAssemblyType: System.Int32, mscorlib
+        required: 1
+        enforcesLODingWhenFieldsOverriden: 1
+        valueSyncCallbackName: 
+        memberType: 4
+        parameterAssemblyTypes: []
+        ownerType:
+          assemblyQualifiedName: TileData, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+            PublicKeyToken=null
+        CustomData:
+          rid: -2
+        bindingType:
+          assemblyQualifiedName: Coherence.Toolkit.Bindings.ValueBindings.IntBinding,
+            Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        oldName: 
+        oldParameterAssemblyTypes: []
+    - rid: 5023203815625064957
+      type: {class: IntBinding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
+      data:
+        descriptor:
+          rid: 5023203815625064958
+        routing: 0
+        isPredicted: 0
+        defaultInterpolationPath: 
+        guid: 95029fa1-4298-49b8-aeb0-bcf8c0d37390
+        archetypeData:
+          type: 1
+          minRange: -2147483648
+          maxRange: 2147483647
+          sampleRate: 20
+          floatCompression: 0
+          fields:
+          - type: 1
+            bits: 32
+            minRange: -2147483648
+            maxRange: 2147483647
+            precision: 0
+            floatCompression: 0
+          sharedBinding: {fileID: 0}
+        unityComponent: {fileID: 700935895188756013}
+        coherenceSync: {fileID: 0}
+        interpolationSettings: {fileID: 11400000, guid: ae4419d1d9a8643709bf5f6b90c584a5, type: 2}
+    - rid: 5023203815625064958
+      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        name: tileState
         monoAssemblyType: System.Int32, mscorlib
         required: 1
         enforcesLODingWhenFieldsOverriden: 1

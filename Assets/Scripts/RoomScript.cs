@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Coherence.Runtime;
-using Coherence.Toolkit;
 using TMPro;
 
 public class RoomScript : MonoBehaviour
@@ -76,10 +74,9 @@ public class RoomScript : MonoBehaviour
 				joinedRoomData = roomData;
 				Debug.Log("Room Data: " + roomData);
 
-				GameManager.currentPlayer = "Player 1";
+				GameManager.currentPlayer = (int)Player.P1;
 
 				UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
-				// JoinRoom(roomData);
 			}
 		}
 		catch (System.Exception e)
