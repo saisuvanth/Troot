@@ -2346,8 +2346,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: deb51c88575ac824592995cb1703d915, type: 2}
-  m_sharedMaterial: {fileID: -3853566732914639663, guid: deb51c88575ac824592995cb1703d915, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 592dfb353f9e3b5479e83a3314d4cc94, type: 2}
+  m_sharedMaterial: {fileID: -1946282579483776705, guid: 592dfb353f9e3b5479e83a3314d4cc94, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2502,8 +2502,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enter Opponents Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: deb51c88575ac824592995cb1703d915, type: 2}
-  m_sharedMaterial: {fileID: -3853566732914639663, guid: deb51c88575ac824592995cb1703d915, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 592dfb353f9e3b5479e83a3314d4cc94, type: 2}
+  m_sharedMaterial: {fileID: -1946282579483776705, guid: 592dfb353f9e3b5479e83a3314d4cc94, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3259,7 +3259,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enter Username
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: deb51c88575ac824592995cb1703d915, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 592dfb353f9e3b5479e83a3314d4cc94, type: 2}
   m_sharedMaterial: {fileID: -3853566732914639663, guid: deb51c88575ac824592995cb1703d915, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3323,7 +3323,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1365748816
@@ -5085,7 +5085,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: deb51c88575ac824592995cb1703d915, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 592dfb353f9e3b5479e83a3314d4cc94, type: 2}
   m_sharedMaterial: {fileID: -3853566732914639663, guid: deb51c88575ac824592995cb1703d915, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5149,7 +5149,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1982263785
