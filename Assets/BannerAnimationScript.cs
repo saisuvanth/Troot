@@ -19,6 +19,7 @@ public class BannerAnimationScript : MonoBehaviour
 
     public void hideBanner()
     {
+        Debug.Log("hide banner");
         background.LeanAlpha(0, 0.5f);
         banner.LeanMoveLocalY(-Screen.height, 0.5f).setEaseInExpo().setOnComplete(onCompleted);   
     }
