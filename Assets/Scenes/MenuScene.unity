@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 25632796}
   - component: {fileID: 25632795}
   - component: {fileID: 25632794}
-  - component: {fileID: 25632797}
   m_Layer: 5
   m_Name: Region Dropdown
   m_TagString: Untagged
@@ -164,7 +163,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -40, y: 25}
+  m_AnchoredPosition: {x: -43.2, y: 25}
   m_SizeDelta: {x: 60, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &25632794
@@ -238,14 +237,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20784314, g: 0.1882353, b: 0.18039216, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 586c7dfc741c53e4e8d4b898bfeb7f39, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -254,7 +253,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 6
 --- !u!222 &25632796
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -263,21 +262,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 25632792}
   m_CullTransparentMesh: 1
---- !u!114 &25632797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 25632792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.9529412, g: 0.9529412, b: 0.9529412, a: 0.5}
-  m_EffectDistance: {x: 3, y: -3}
-  m_UseGraphicAlpha: 0
 --- !u!1 &52991993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3509,14 +3493,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20784314, g: 0.1882353, b: 0.18039216, a: 1}
+  m_Color: {r: 0.011764706, g: 0.03529412, b: 0.14117648, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 586c7dfc741c53e4e8d4b898bfeb7f39, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3525,7 +3509,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2
 --- !u!222 &1232715234
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3566,7 +3550,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1258951941
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3696,7 +3680,7 @@ MonoBehaviour:
   m_text: Enter Username
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 592dfb353f9e3b5479e83a3314d4cc94, type: 2}
-  m_sharedMaterial: {fileID: -3853566732914639663, guid: deb51c88575ac824592995cb1703d915, type: 2}
+  m_sharedMaterial: {fileID: -1946282579483776705, guid: 592dfb353f9e3b5479e83a3314d4cc94, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4102,14 +4086,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20784314, g: 0.1882353, b: 0.18039216, a: 1}
+  m_Color: {r: 0.011764706, g: 0.03529412, b: 0.14117648, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 586c7dfc741c53e4e8d4b898bfeb7f39, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4118,7 +4102,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2
 --- !u!222 &1396303469
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5611,7 +5595,7 @@ MonoBehaviour:
   m_text: "\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 592dfb353f9e3b5479e83a3314d4cc94, type: 2}
-  m_sharedMaterial: {fileID: -3853566732914639663, guid: deb51c88575ac824592995cb1703d915, type: 2}
+  m_sharedMaterial: {fileID: -1946282579483776705, guid: 592dfb353f9e3b5479e83a3314d4cc94, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
