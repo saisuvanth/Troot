@@ -1242,6 +1242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   banner: {fileID: 395347603}
   background: {fileID: 1763236611}
+  bannerObject: {fileID: 0}
 --- !u!4 &617749530 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6512251352013679920, guid: 364668b13fdbd08429c166a9078bf95e, type: 3}
@@ -1692,7 +1693,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 34728340}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2313,6 +2314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   banner: {fileID: 1230685319}
   background: {fileID: 1720552365}
+  bannerObject: {fileID: 0}
 --- !u!1 &1129264548
 GameObject:
   m_ObjectHideFlags: 0
